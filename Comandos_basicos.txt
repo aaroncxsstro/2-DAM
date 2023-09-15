@@ -1,0 +1,13 @@
+git clone https://github.com/aaroncxsstro/2-DAM.git
+
+# Verificar el estado de los archivos
+git status
+
+# Agregar los archivos que deseas incluir en el commit
+git add archivo1 archivo2 ...
+
+# Realizar un commit con un mensaje descriptivo
+git commit -m "Mensaje descriptivo de los cambios"
+
+# Subir los cambios al repositorio remoto
+git push
