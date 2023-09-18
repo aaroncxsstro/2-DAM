@@ -1,0 +1,5 @@
+INDEX VERSION 1.132+C:\Users\Mañana_posx\Desktop\Acceso a datos\Eclipse-Projects\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index
+1163305748.index
+3959137331.index
+3564488969.index

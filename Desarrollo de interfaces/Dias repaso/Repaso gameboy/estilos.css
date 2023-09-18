@@ -1,0 +1,44 @@
+ul {
+    background-color:black;
+    text-align: center;
+    padding: 0.8em;
+}
+
+li {
+    display: inline;
+    color:white;
+    padding: 5em;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
+}
+
+.gameboy {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center;
+}
+.carcasa {
+    display: inline-block;
+    margin-top: 4em;
+    height: 28em;
+    width: 18em;
+    background-color:rgb(204, 202, 202);
+    border-bottom-right-radius: 15%;
+}
+
+.pantallaext {
+    margin: 2em;
+    height: 40%;
+    width: 80%;
+    background-color:rgb(43, 102, 192);
+    border-bottom-right-radius: 15%;
+}
+
+.pantallaint {
+    margin: 2em;
+    display: flexbox;
+    height: 30%;
+    width: 65%;
+    background-color:rgb(6, 63, 54);
+
+}

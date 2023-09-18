@@ -1,0 +1,10 @@
+package Ejemplo_procesos_5Segundos_01;
+
+public class Ejemplo1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
