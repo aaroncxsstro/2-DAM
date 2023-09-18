@@ -2,4 +2,5 @@
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="java.io.File"/>
     <fullyQualifiedTypeName name="org.apache.commons.io.FileUtils"/>
+    <fullyQualifiedTypeName name="java.io.RandomAccessFile"/>
 </qualifiedTypeNameHistroy>
