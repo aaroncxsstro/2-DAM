@@ -15,5 +15,6 @@ public class PrimaryController {
     
     public void saludar(ActionEvent event){
         
+        txtSaludo.setText("Hola Mundo");
     }
 }
