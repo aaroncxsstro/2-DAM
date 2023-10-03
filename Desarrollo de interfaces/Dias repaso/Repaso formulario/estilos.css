@@ -1,0 +1,40 @@
+ul {
+    background-color:blue;
+    text-align: left;
+    padding-bottom: 0.8em;
+}
+
+a {
+color: white;
+text-decoration: none;
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+padding: 6em;
+}
+
+li {
+    display: inline;
+
+}
+
+.contenedor {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center;
+}
+
+.cuadro {
+    display: flex;
+    justify-content: center;
+    padding: 2%;
+    margin-top: 4em;
+    height: 38em;
+    width: 24em;
+    background-color:rgb(84, 155, 248);
+    border: 3px solid black;
+    border-radius: 5%;
+}
+
+
+.campo {
+   display: inline;
+}

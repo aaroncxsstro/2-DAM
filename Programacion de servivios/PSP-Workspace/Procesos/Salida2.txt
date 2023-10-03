@@ -1,0 +1,16 @@
+ El volumen de la unidad C no tiene etiqueta.
+ El n£mero de serie del volumen es: B1C8-5493
+
+ Directorio de C:\Users\Ma¤ana_posx\Desktop\2-DAM\Programacion de servivios\PSP-Workspace\Procesos
+
+20/09/2023  09:44    <DIR>          .
+20/09/2023  09:44    <DIR>          ..
+13/09/2023  08:33               396 .classpath
+13/09/2023  08:33               384 .project
+15/09/2023  12:59    <DIR>          .settings
+20/09/2023  08:59    <DIR>          bin
+20/09/2023  09:41               649 Salida.txt
+20/09/2023  09:44                 0 Salida2.txt
+20/09/2023  08:59    <DIR>          src
+               4 archivos          1.429 bytes
+               5 dirs  164.439.638.016 bytes libres

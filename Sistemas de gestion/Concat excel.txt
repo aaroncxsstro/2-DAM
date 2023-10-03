@@ -1,0 +1,7 @@
+db.Clientes.insertMany([
+{cod_provincia:"28",nom_provincia:"Madrid",num_habitantes:50},
+{cod_provincia:"08",nom_provincia:"Barcelona",num_habitantes:60}
+])
+
+=CONCATENAR("db.clientes.insertOne({cod_provincia:";"")
+
