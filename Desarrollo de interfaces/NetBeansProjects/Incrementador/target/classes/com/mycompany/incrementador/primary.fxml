@@ -12,6 +12,7 @@
       <Button fx:id="btInc" layoutX="395.0" layoutY="188.0" mnemonicParsing="false" onAction="#increase" prefHeight="42.0" prefWidth="42.0" text="+" />
       <TextField fx:id="txtResult" layoutX="267.0" layoutY="136.0" />
       <Label layoutX="315.0" layoutY="101.0" text="Resultado" />
+
       <ImageView fx:id="imgPerri" fitHeight="150.0" fitWidth="200.0" layoutX="46.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
