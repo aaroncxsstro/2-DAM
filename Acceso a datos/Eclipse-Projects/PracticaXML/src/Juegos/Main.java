@@ -10,68 +10,73 @@ import javax.xml.transform.stream.*;
 
 public class Main {
     public static void main(String[] args) {
-        List<Juego> juegos = cargarJuegosDesdeXML("juegos.xml");
-        Scanner scanner = new Scanner(System.in);
-
-        while (true) {
-            System.out.println("\nMenú:");
-            System.out.println("1. Eliminar un juego.");
-            System.out.println("2. Añadir un juego.");
-            System.out.println("3. Buscar un juego por un atributo.");
-            System.out.println("4. Insertar un objeto juego en el XML.");
-            System.out.println("5. Guardar y salir.");
-
-            int opcion = scanner.nextInt();
-            scanner.nextLine();
-
-            switch (opcion) {
-                case 1:
-                    eliminarJuego(juegos, scanner);
-                    break;
-                case 2:
-                    agregarJuego(juegos, scanner);
-                    break;
-                case 3:
-                    buscarJuegoPorAtributo(juegos, scanner);
-                    break;
-                case 4:
-                    insertarJuegoEnXML(juegos, scanner, "juegos.xml");
-                    break;
-                case 5:
-                    guardarJuegosEnXML(juegos, "juegos.xml");
-                    System.out.println("Guardando y saliendo del programa.");
-                    System.exit(0);
-                default:
-                    System.out.println("Opción no válida.");
-            }
-        }
-    }
-
-    public static List<Juego> cargarJuegosDesdeXML(String archivoXML) {
-        List<Juego> juegos = new ArrayList<>();
         try {
-            File archivo = new File(archivoXML);
-            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            Document documento = dBuilder.parse(archivo);
-            documento.getDocumentElement().normalize();
+            List<Juego> juegos = cargarJuegosDesdeXML("juegos.xml");
+            Scanner scanner = new Scanner(System.in);
 
-            NodeList listaDeJuegos = documento.getElementsByTagName("juego");
+            while (true) {
+                System.out.println("\nMenú:");
+                System.out.println("1. Eliminar un juego.");
+                System.out.println("2. Añadir un juego.");
+                System.out.println("3. Buscar un juego por un atributo.");
+                System.out.println("4. Insertar un objeto juego en el XML.");
+                System.out.println("5. Guardar y salir.");
 
-            for (int i = 0; i < listaDeJuegos.getLength(); i++) {
-                Node nodoJuego = listaDeJuegos.item(i);
-                if (nodoJuego.getNodeType() == Node.ELEMENT_NODE) {
-                    Element elementoJuego = (Element) nodoJuego;
-                    String titulo = elementoJuego.getElementsByTagName("titulo").item(0).getTextContent();
-                    String genero = elementoJuego.getElementsByTagName("genero").item(0).getTextContent();
-                    String plataforma = elementoJuego.getElementsByTagName("plataforma").item(0).getTextContent();
-                    String fechaLanzamiento = elementoJuego.getElementsByTagName("fechadelanzamiento").item(0).getTextContent();
-                    Juego juego = new Juego(titulo, genero, plataforma, fechaLanzamiento);
-                    juegos.add(juego);
+                int opcion = scanner.nextInt();
+                scanner.nextLine();
+
+                switch (opcion) {
+                    case 1:
+                        eliminarJuego(juegos, scanner);
+                        break;
+                    case 2:
+                        agregarJuego(juegos, scanner);
+                        break;
+                    case 3:
+                        buscarJuegoPorAtributo(juegos, scanner);
+                        break;
+                    case 4:
+                        insertarJuegoEnXML(juegos, scanner, "juegos.xml");
+                        break;
+                    case 5:
+                        guardarJuegosEnXML(juegos, "juegos.xml");
+                        System.out.println("Guardando y saliendo del programa.");
+                        System.exit(0);
+                    default:
+                        System.out.println("Opción no válida.");
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public static List<Juego> cargarJuegosDesdeXML(String archivoXML) throws Exception {
+        List<Juego> juegos = new ArrayList<>();
+        File archivo = new File(archivoXML);
+        if (!archivo.exists()) {
+            System.out.println("El archivo " + archivoXML + " no existe.");
+            return juegos;
+        }
+
+        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+        Document documento = dBuilder.parse(archivo);
+        documento.getDocumentElement().normalize();
+
+        NodeList listaDeJuegos = documento.getElementsByTagName("juego");
+
+        for (int i = 0; i < listaDeJuegos.getLength(); i++) {
+            Node nodoJuego = listaDeJuegos.item(i);
+            if (nodoJuego.getNodeType() == Node.ELEMENT_NODE) {
+                Element elementoJuego = (Element) nodoJuego;
+                String titulo = elementoJuego.getElementsByTagName("titulo").item(0).getTextContent();
+                String genero = elementoJuego.getElementsByTagName("genero").item(0).getTextContent();
+                String plataforma = elementoJuego.getElementsByTagName("plataforma").item(0).getTextContent();
+                String fechaLanzamiento = elementoJuego.getElementsByTagName("fechadelanzamiento").item(0).getTextContent();
+                Juego juego = new Juego(titulo, genero, plataforma, fechaLanzamiento);
+                juegos.add(juego);
+            }
         }
         return juegos;
     }
@@ -114,29 +119,32 @@ public class Main {
         System.out.println("3. Plataforma");
         System.out.println("4. Fecha de lanzamiento");
 
- 
         int opcion = scanner.nextInt();
-        String valorBuscar = scanner.nextLine();
+        scanner.nextLine();
 
         switch (opcion) {
             case 1:
-                buscarPorAtributo(juegos, "titulo", valorBuscar);
+                buscarPorAtributo(juegos, "titulo", scanner);
                 break;
             case 2:
-                buscarPorAtributo(juegos, "genero", valorBuscar);
+                buscarPorAtributo(juegos, "genero", scanner);
                 break;
             case 3:
-                buscarPorAtributo(juegos, "plataforma", valorBuscar);
+                buscarPorAtributo(juegos, "plataforma", scanner);
                 break;
             case 4:
-                buscarPorAtributo(juegos, "fechaLanzamiento", valorBuscar);
+                buscarPorAtributo(juegos, "fechaLanzamiento", scanner);
                 break;
             default:
                 System.out.println("Opción no válida.");
         }
     }
 
-    public static void buscarPorAtributo(List<Juego> juegos, String atributo, String valorBuscar) {
+    public static void buscarPorAtributo(List<Juego> juegos, String atributo, Scanner scanner) {
+        System.out.print("Ingrese el valor a buscar: ");
+        String valorBuscar = scanner.nextLine();
+        boolean encontrado = false;
+
         for (Juego juego : juegos) {
             String valorAtributo = null;
             switch (atributo) {
@@ -160,10 +168,13 @@ public class Main {
             if (valorAtributo != null && valorAtributo.equalsIgnoreCase(valorBuscar)) {
                 System.out.println("Juego encontrado:");
                 System.out.println(juego);
-                return;
+                encontrado = true;
             }
         }
-        System.out.println("Ningún juego coincide con el valor del atributo proporcionado.");
+
+        if (!encontrado) {
+            System.out.println("Ningún juego coincide con el valor del atributo proporcionado.");
+        }
     }
 
     public static void insertarJuegoEnXML(List<Juego> juegos, Scanner scanner, String archivoXML) {
@@ -171,8 +182,14 @@ public class Main {
             File archivo = new File(archivoXML);
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            Document documento = dBuilder.parse(archivo);
-            documento.getDocumentElement().normalize();
+            Document documento;
+            if (archivo.exists()) {
+                documento = dBuilder.parse(archivo);
+                documento.getDocumentElement().normalize();
+            } else {
+                documento = dBuilder.newDocument();
+                documento.appendChild(documento.createElement("listadejuegos"));
+            }
 
             Element listaDeJuegos = documento.getDocumentElement();
 
