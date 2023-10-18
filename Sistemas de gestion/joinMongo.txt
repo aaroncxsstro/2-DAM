@@ -1,0 +1,21 @@
+db.g2_directores.aggregate([
+  {
+    $lookup: {
+      from: "g2_centros",
+      localField: "cod_centro",
+      foreignField: "cod_centro",
+      as: "Fusion"
+    }
+  },
+  {
+    $unwind: "$Fusion"
+  },
+  {
+    $project: {
+      "_id": 0,
+      "nom_director": 1,
+      "cod_centro": 1,
+      "Fusion": [{ "nom_centro": "$Fusion.nom_centro" }] // Crear un arreglo con un objeto
+    }
+  }
+]);
