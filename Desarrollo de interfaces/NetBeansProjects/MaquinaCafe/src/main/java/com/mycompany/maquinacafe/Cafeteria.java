@@ -97,7 +97,7 @@ private void mostrarAlertaError(String error) {
     saldoActual = saldoActual + saldoIntroducido;
     
     almacenSaldo.setText(String.valueOf(saldoActual)+"€");
-            
+                 fieldSaldo.clear(); 
     
      }
     } catch (NumberFormatException e) {
@@ -105,6 +105,7 @@ private void mostrarAlertaError(String error) {
     } 
  
      }
+     
      
      @FXML
     public void pedirCafe (ActionEvent event){
@@ -134,11 +135,10 @@ try{
             
               Cafe c1 = new Cafe (tipo, tamaño, cantidad);
               c1.calcularPrecio();
-              double saldoNum=0;
-              String saldoText = fieldSaldo.getText();
-              if(saldoText!=null){
-              saldoNum = Double.parseDouble(saldoText);
-              }
+              String saldoText = almacenSaldo.getText().substring(0,almacenSaldo.getText().length()-1);;
+
+              double saldoNum = Double.parseDouble(saldoText);
+
               if(saldoNum<c1.getPrecio()){
          mostrarAlertaError("No hay saldo suficiente");
               }else {
@@ -147,20 +147,29 @@ try{
               
      String saldoActualText=almacenSaldo.getText().substring(0,almacenSaldo.getText().length()-1);
     double saldoActual = Double.parseDouble(saldoActualText);
-    saldoActual = saldoActual - saldoNum;
+    saldoActual = saldoActual - c1.getPrecio();
+
+    cbx.getSelectionModel().clearSelection(); 
+    cortado.setSelected(false); 
+    latte.setSelected(false); 
+    capuccino.setSelected(false);
+    fieldCantidad.clear(); 
     
     almacenSaldo.setText(String.valueOf(saldoActual)+"€");
               }
               
           }
-              } catch (NumberFormatException e) {
-       mostrarAlertaError("Introduce un caracter válido1");
-    } 
+              
+} catch (NumberFormatException e) {
+       mostrarAlertaError("Introduce un caracter válido");
+} 
             
+
 }else{
 mostrarAlertaError("Debes seleccionar el tamaño del café");
 }
-} else {
+
+       } else {
            
 mostrarAlertaError("Debes seleccionar el tipo de café");
 
@@ -181,6 +190,12 @@ mostrarAlertaError("Debes seleccionar el tipo de café");
 
         if (resultado.isPresent() && resultado.get() == ButtonType.OK) {
             tabla.getItems().remove(cafeSeleccionado);
+     double saldoRegresar=cafeSeleccionado.getPrecio();
+     String saldoActualText=almacenSaldo.getText().substring(0,almacenSaldo.getText().length()-1);
+    double saldoActual = Double.parseDouble(saldoActualText);
+    saldoActual = saldoActual + saldoRegresar;
+ 
+    almacenSaldo.setText(String.valueOf(saldoActual)+"€");
         }
     } else {
         mostrarAlertaError("Selecciona un café para eliminar.");

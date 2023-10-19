@@ -54,9 +54,9 @@ public class Cafe {
     
     public void calcularPrecio(){
         switch (this.tamañoCafe){
-            case "Pequeño": this.precio=0.50*this.cantidad;
-            case "Mediano": this.precio=1.0*this.cantidad;
-            case "Grande": this.precio=1.50*this.cantidad;
+            case "Pequeño": this.precio=0.50*this.cantidad; break;
+            case "Mediano": this.precio=1.0*this.cantidad; break;
+            case "Grande": this.precio=1.50*this.cantidad; break;
                 
     }
     }
