@@ -74,6 +74,7 @@
          </font>
       </Button>
       <ComboBox fx:id="cbx" layoutX="413.0" layoutY="53.0" prefHeight="25.0" prefWidth="122.0" />
+      <TextField id="cantidadSelector" fx:id="txtBuscar" layoutX="315.0" layoutY="304.0" onKeyReleased="#filtrar" prefHeight="25.0" prefWidth="68.0" />
 
    </children>
 </AnchorPane>

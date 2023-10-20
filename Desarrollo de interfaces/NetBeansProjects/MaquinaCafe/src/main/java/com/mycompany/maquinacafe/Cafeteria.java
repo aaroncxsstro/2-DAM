@@ -5,6 +5,7 @@ import java.util.Optional;
 import javafx.fxml.FXML;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -19,9 +20,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 
 public class Cafeteria {
    
+
+    @FXML
+    private TextField txtBuscar;
+    
        @FXML
     private TableView<Cafe> tabla;
        
@@ -60,6 +66,9 @@ public class Cafeteria {
 
     @FXML
     private ComboBox<String> cbx;
+   
+    
+private ObservableList<Cafe> todosLosCafesOriginal;
 
     @FXML
 private void mostrarAlertaError(String error) {
@@ -78,7 +87,11 @@ private void mostrarAlertaError(String error) {
     tamañoColumn.setCellValueFactory(new PropertyValueFactory<>("tamañoCafe"));
     precioColumn.setCellValueFactory(new PropertyValueFactory<>("precio"));
     cantidadColumn.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
-}
+    
+    todosLosCafesOriginal = FXCollections.observableArrayList();
+    // Agrega tus cafés a la lista "todosLosCafesOriginal".
+    }
+
     
     @FXML
      void añadirSaldo (ActionEvent event) {
@@ -142,9 +155,10 @@ try{
               if(saldoNum<c1.getPrecio()){
          mostrarAlertaError("No hay saldo suficiente");
               }else {
-              
-              tabla.getItems().add(c1);
-              
+
+                        todosLosCafesOriginal.add(c1);
+                        tabla.setItems(todosLosCafesOriginal);
+                
      String saldoActualText=almacenSaldo.getText().substring(0,almacenSaldo.getText().length()-1);
     double saldoActual = Double.parseDouble(saldoActualText);
     saldoActual = saldoActual - c1.getPrecio();
@@ -176,6 +190,30 @@ mostrarAlertaError("Debes seleccionar el tipo de café");
 } 
        
     }
+    
+public void filtrar(KeyEvent event) {
+    String filtro = txtBuscar.getText().toLowerCase();
+
+
+    if (filtro.isEmpty()) {
+        // Si el campo de búsqueda está vacío, muestra todos los elementos originales
+        tabla.setItems(todosLosCafesOriginal);
+    } else {
+        // Crea una nueva lista filtrada
+        ObservableList<Cafe> cafesFiltrados = FXCollections.observableArrayList();
+
+        for (Cafe c : todosLosCafesOriginal) {
+            if (c.getTipoCafe().toLowerCase().contains(filtro)) {
+                cafesFiltrados.add(c);
+            }
+        }
+
+        // Establece la nueva lista filtrada en la tabla
+        tabla.setItems(cafesFiltrados);
+    }
+}
+
+        
     
     public void eliminarCafeSeleccionado(ActionEvent event) {
     Cafe cafeSeleccionado = tabla.getSelectionModel().getSelectedItem();
