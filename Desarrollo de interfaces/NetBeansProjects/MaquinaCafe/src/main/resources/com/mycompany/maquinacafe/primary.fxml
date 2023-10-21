@@ -12,49 +12,44 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="395.0" prefWidth="702.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.maquinacafe.Cafeteria">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="395.0" prefWidth="702.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.maquinacafe.Cafeteria">
    <children>
       <ImageView fitHeight="395.0" fitWidth="819.0" layoutX="179.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-117.0" AnchorPane.topAnchor="0.0">
          <image>
-            <Image url="@../../../resources/fondo.png" />
+            <Image url="@../../../resources/fondo2.png" />
          </image>
       </ImageView>
-      <ImageView id="logo" fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../resources/cafe.png" />
-         </image>
-      </ImageView>
-      <Label id="saldo" layoutX="59.0" layoutY="210.0" prefHeight="28.0" prefWidth="68.0" text="SALDO" textFill="WHITE">
+      <Label id="saldo" layoutX="287.0" layoutY="128.0" prefHeight="28.0" prefWidth="68.0" text="SALDO" textFill="WHITE">
          <font>
             <Font name="Verdana Bold" size="16.0" />
          </font>
       </Label>
       
-      <Label id="saldo" layoutX="434.0" layoutY="25.0" prefHeight="28.0" prefWidth="80.0" text="TAMAÑO" textFill="#331200">
+      <Label id="saldo" layoutX="455.0" layoutY="42.0" prefHeight="28.0" prefWidth="80.0" text="TAMAÑO" textFill="WHITE">
          <font>
             <Font name="Verdana Bold" size="16.0" />
          </font>
       </Label>
-      <Label id="saldo" fx:id="almacenSaldo" layoutX="75.0" layoutY="237.0" prefHeight="28.0" prefWidth="218.0" text="0.0€" textFill="WHITE">
+      <Label id="saldo" fx:id="almacenSaldo" layoutX="303.0" layoutY="154.0" prefHeight="28.0" prefWidth="218.0" text="0.0€" textFill="WHITE">
          <font>
             <Font name="Verdana Bold" size="12.0" />
          </font>
       </Label>
-      <TextField id="cantidadSelector" fx:id="fieldCantidad" layoutX="563.0" layoutY="53.0" prefHeight="25.0" prefWidth="68.0" />
-      <Label id="saldo" layoutX="556.0" layoutY="25.0" prefHeight="28.0" prefWidth="80.0" text="Cantidad" textFill="#331200">
+      <TextField id="cantidadSelector" fx:id="fieldCantidad" layoutX="586.0" layoutY="70.0" prefHeight="25.0" prefWidth="68.0" />
+      <Label id="saldo" layoutX="570.0" layoutY="42.0" prefHeight="28.0" prefWidth="99.0" text="CANTIDAD" textFill="WHITE">
          <font>
             <Font name="Verdana Bold" size="16.0" />
          </font>
       </Label>
-      <Button id="botonPedir" layoutX="474.0" layoutY="102.0" mnemonicParsing="false" onAction="#pedirCafe" prefHeight="51.0" prefWidth="136.0" style="-fx-background-color: lightbrown; -fx-border-color: #331200; -fx-border-width: 3px;" text="PEDIR" textAlignment="CENTER" textFill="#331200">
+      <Button id="botonPedir" layoutX="479.0" layoutY="116.0" mnemonicParsing="false" onAction="#pedirCafe" prefHeight="51.0" prefWidth="136.0" style="-fx-background-color: #b87c4c; -fx-border-color: white; -fx-border-width: 5px;" text="PEDIR" textAlignment="CENTER" textFill="WHITE">
          <font>
-            <Font size="21.0" />
+            <Font name="System Bold" size="21.0" />
          </font>
       </Button>
-      <RadioButton fx:id="cortado" layoutX="150.0" layoutY="31.0" mnemonicParsing="false" text="Cortado" />
-      <RadioButton fx:id="latte" layoutX="150.0" layoutY="57.0" mnemonicParsing="false" text="Cafe latte" />
-      <RadioButton fx:id="capuccino" layoutX="150.0" layoutY="83.0" mnemonicParsing="false" text="Capuccino" />
-      <TableView fx:id="tabla" layoutX="390.0" layoutY="181.0" prefHeight="200.0" prefWidth="305.0">
+      <RadioButton fx:id="cortado" layoutX="210.0" layoutY="31.0" mnemonicParsing="false" text="Cortado" textFill="WHITE" />
+      <RadioButton fx:id="latte" layoutX="223.0" layoutY="61.0" mnemonicParsing="false" text="Cafe latte" textFill="WHITE" />
+      <RadioButton fx:id="capuccino" layoutX="233.0" layoutY="92.0" mnemonicParsing="false" text="Capuccino" textFill="WHITE" />
+      <TableView fx:id="tabla" layoutX="390.0" layoutY="185.0" prefHeight="200.0" prefWidth="305.0">
         <columns>
           <TableColumn fx:id="tipoColumn" prefWidth="72.0" text="Tipo" />
           <TableColumn fx:id="tamañoColumn" prefWidth="100.0" text="Tamaño" />
@@ -62,19 +57,25 @@
             <TableColumn fx:id="precioColumn" prefWidth="42.0" text="Precio" />
         </columns>
       </TableView>
-      <Button id="botonSaldo" fx:id="btnSaldo" layoutX="120.0" layoutY="268.0" mnemonicParsing="false" onAction="#añadirSaldo" prefHeight="0.0" prefWidth="24.0" style="-fx-background-color: white;" text="+" textAlignment="CENTER" textFill="#b47c4d">
+      <Button id="botonSaldo" fx:id="btnSaldo" layoutX="342.0" layoutY="185.0" mnemonicParsing="false" onAction="#añadirSaldo" prefHeight="26.0" prefWidth="24.0" style="-fx-background-color: white;" text="+" textAlignment="CENTER" textFill="#b47c4d">
          <font>
             <Font size="11.0" />
          </font>
       </Button>
-      <TextField id="cantidadSelector" fx:id="fieldSaldo" layoutX="47.0" layoutY="268.0" prefHeight="25.0" prefWidth="68.0" />
-      <Button id="botonSaldo" fx:id="eliminarTabla" layoutX="349.0" layoutY="342.0" mnemonicParsing="false" onAction="#eliminarCafeSeleccionado" prefHeight="28.0" prefWidth="32.0" style="-fx-background-color: white;" text="x" textAlignment="CENTER" textFill="#f23535">
+      <TextField id="cantidadSelector" fx:id="fieldSaldo" layoutX="269.0" layoutY="186.0" prefHeight="25.0" prefWidth="68.0" />
+      <Button id="botonSaldo" fx:id="eliminarTabla" layoutX="340.0" layoutY="349.0" mnemonicParsing="false" onAction="#eliminarCafeSeleccionado" prefHeight="26.0" prefWidth="24.0" style="-fx-background-color: white;" text="x" textAlignment="CENTER" textFill="RED">
          <font>
-            <Font size="17.0" />
+            <Font size="11.0" />
          </font>
       </Button>
-      <ComboBox fx:id="cbx" layoutX="413.0" layoutY="53.0" prefHeight="25.0" prefWidth="122.0" />
-      <TextField id="cantidadSelector" fx:id="txtBuscar" layoutX="315.0" layoutY="304.0" onKeyReleased="#filtrar" prefHeight="25.0" prefWidth="68.0" />
+      <ComboBox fx:id="cbx" layoutX="435.0" layoutY="70.0" prefHeight="25.0" prefWidth="122.0" style="-fx-background-color: white;" />
+      <TextField id="cantidadSelector" fx:id="txtBuscar" layoutX="267.0" layoutY="348.0" onKeyReleased="#filtrar" prefHeight="28.0" prefWidth="68.0" />
+      <ImageView fx:id="vasoDeCafeImageView" fitHeight="200.0" fitWidth="122.0" layoutX="27.0" layoutY="241.0" pickOnBounds="true" preserveRatio="true" />
+      <Label id="saldo" layoutX="283.0" layoutY="305.0" prefHeight="28.0" prefWidth="68.0" text="FILTRO" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="16.0" />
+         </font>
+      </Label>
 
    </children>
 </AnchorPane>

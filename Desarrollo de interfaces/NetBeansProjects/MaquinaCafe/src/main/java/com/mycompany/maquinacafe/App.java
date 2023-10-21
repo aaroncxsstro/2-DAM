@@ -22,8 +22,10 @@ public class App extends Application {
 
         FXMLLoader loader = new FXMLLoader(App.class.getResource("primary.fxml"));
         Parent root = loader.load();
-
+        
         Scene scene = new Scene(root);
+        
+        scene.getStylesheets().add(getClass().getResource("/resources/style.css").toExternalForm());
 
        Image icon = new Image(App.class.getResourceAsStream("/resources/cafe.png"));
 
@@ -32,7 +34,7 @@ public class App extends Application {
         stage.setScene(scene);
 
         stage.sizeToScene();
-
+        
         stage.setTitle("Coffee Shop");
         
           stage.setResizable(false);

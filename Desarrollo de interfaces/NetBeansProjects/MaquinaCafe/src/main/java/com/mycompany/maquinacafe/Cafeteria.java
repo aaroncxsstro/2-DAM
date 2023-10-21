@@ -1,11 +1,12 @@
 package com.mycompany.maquinacafe;
 
-import java.io.IOException;
+
 import java.util.Optional;
+import javafx.animation.ScaleTransition;
+import javafx.animation.SequentialTransition;
 import javafx.fxml.FXML;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -20,11 +21,15 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.util.Duration;
 
 public class Cafeteria {
    
 
+    
     @FXML
     private TextField txtBuscar;
     
@@ -67,6 +72,8 @@ public class Cafeteria {
     @FXML
     private ComboBox<String> cbx;
    
+    @FXML
+    private ImageView vasoDeCafeImageView;
     
 private ObservableList<Cafe> todosLosCafesOriginal;
 
@@ -92,7 +99,7 @@ private void mostrarAlertaError(String error) {
     // Agrega tus cafés a la lista "todosLosCafesOriginal".
     }
 
-    
+     
     @FXML
      void añadirSaldo (ActionEvent event) {
         double saldoIntroducido=0;
@@ -120,8 +127,60 @@ private void mostrarAlertaError(String error) {
      }
      
      
+    
+@FXML
+public void animarCafe(String t) {
+    Image imagenCafe = null;
+    Image imagenCafeLleno = null;
+
+    if (t.equals("Pequeño")) {
+        imagenCafe = new Image("/resources/pequeno.png");
+        imagenCafeLleno = new Image("/resources/pequenolleno.png");
+        vasoDeCafeImageView.setLayoutY(241);
+        vasoDeCafeImageView.setImage(imagenCafe);
+    } else if (t.equals("Mediano")) {
+        imagenCafe = new Image("/resources/mediano.png");
+        imagenCafeLleno = new Image("/resources/medianolleno.png");
+        vasoDeCafeImageView.setLayoutY(211);
+        vasoDeCafeImageView.setImage(imagenCafe);
+    } else if (t.equals("Grande")) {
+        imagenCafe = new Image("/resources/grande.png");
+        imagenCafeLleno = new Image("/resources/grandelleno.png");
+        vasoDeCafeImageView.setLayoutY(182);
+        vasoDeCafeImageView.setImage(imagenCafe);
+    }
+
+    final Image imagenFinalLleno = imagenCafeLleno; // Variable final
+
+    // Crear una animación de expansión y contracción
+    ScaleTransition expandirAnimacion = new ScaleTransition(Duration.seconds(1), vasoDeCafeImageView);
+    expandirAnimacion.setFromX(1.0);
+    expandirAnimacion.setToX(1.1);
+    expandirAnimacion.setFromY(1.0);
+    expandirAnimacion.setToY(1.1);
+
+    // Crear una animación de contracción
+    ScaleTransition contraerAnimacion = new ScaleTransition(Duration.seconds(1), vasoDeCafeImageView);
+    contraerAnimacion.setFromX(1.1);
+    contraerAnimacion.setToX(1.0);
+    contraerAnimacion.setFromY(1.1);
+    contraerAnimacion.setToY(1.0);
+    
+    contraerAnimacion.setOnFinished(e -> {
+        vasoDeCafeImageView.setImage(imagenFinalLleno);
+    });
+
+    // Crear una transición secuencial que combina las dos animaciones
+    SequentialTransition secuenciaAnimacion = new SequentialTransition(expandirAnimacion, contraerAnimacion);
+
+    // Iniciar la secuencia de animación
+    secuenciaAnimacion.play();
+}
+
+ 
      @FXML
     public void pedirCafe (ActionEvent event){
+        
         
         ToggleGroup toggleGroup = new ToggleGroup();
         cortado.setToggleGroup(toggleGroup);
@@ -146,6 +205,7 @@ try{
          mostrarAlertaError("La cantidad introducida debe ser mayor que cero");
             }else{
             
+              
               Cafe c1 = new Cafe (tipo, tamaño, cantidad);
               c1.calcularPrecio();
               String saldoText = almacenSaldo.getText().substring(0,almacenSaldo.getText().length()-1);;
@@ -155,7 +215,8 @@ try{
               if(saldoNum<c1.getPrecio()){
          mostrarAlertaError("No hay saldo suficiente");
               }else {
-
+                  
+                  animarCafe(tamaño);
                         todosLosCafesOriginal.add(c1);
                         tabla.setItems(todosLosCafesOriginal);
                 
@@ -228,6 +289,7 @@ public void filtrar(KeyEvent event) {
 
         if (resultado.isPresent() && resultado.get() == ButtonType.OK) {
             tabla.getItems().remove(cafeSeleccionado);
+            todosLosCafesOriginal.remove(cafeSeleccionado);
      double saldoRegresar=cafeSeleccionado.getPrecio();
      String saldoActualText=almacenSaldo.getText().substring(0,almacenSaldo.getText().length()-1);
     double saldoActual = Double.parseDouble(saldoActualText);
