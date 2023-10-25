@@ -96,7 +96,7 @@ private void mostrarAlertaError(String error) {
     cantidadColumn.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
     
     todosLosCafesOriginal = FXCollections.observableArrayList();
-    // Agrega tus cafés a la lista "todosLosCafesOriginal".
+
     }
 
      
@@ -150,16 +150,16 @@ public void animarCafe(String t) {
         vasoDeCafeImageView.setImage(imagenCafe);
     }
 
-    final Image imagenFinalLleno = imagenCafeLleno; // Variable final
+    final Image imagenFinalLleno = imagenCafeLleno;
 
-    // Crear una animación de expansión y contracción
+   
     ScaleTransition expandirAnimacion = new ScaleTransition(Duration.seconds(1), vasoDeCafeImageView);
     expandirAnimacion.setFromX(1.0);
     expandirAnimacion.setToX(1.1);
     expandirAnimacion.setFromY(1.0);
     expandirAnimacion.setToY(1.1);
 
-    // Crear una animación de contracción
+
     ScaleTransition contraerAnimacion = new ScaleTransition(Duration.seconds(1), vasoDeCafeImageView);
     contraerAnimacion.setFromX(1.1);
     contraerAnimacion.setToX(1.0);
@@ -170,10 +170,10 @@ public void animarCafe(String t) {
         vasoDeCafeImageView.setImage(imagenFinalLleno);
     });
 
-    // Crear una transición secuencial que combina las dos animaciones
+
     SequentialTransition secuenciaAnimacion = new SequentialTransition(expandirAnimacion, contraerAnimacion);
 
-    // Iniciar la secuencia de animación
+
     secuenciaAnimacion.play();
 }
 
@@ -257,10 +257,10 @@ public void filtrar(KeyEvent event) {
 
 
     if (filtro.isEmpty()) {
-        // Si el campo de búsqueda está vacío, muestra todos los elementos originales
+
         tabla.setItems(todosLosCafesOriginal);
     } else {
-        // Crea una nueva lista filtrada
+
         ObservableList<Cafe> cafesFiltrados = FXCollections.observableArrayList();
 
         for (Cafe c : todosLosCafesOriginal) {
@@ -269,7 +269,7 @@ public void filtrar(KeyEvent event) {
             }
         }
 
-        // Establece la nueva lista filtrada en la tabla
+
         tabla.setItems(cafesFiltrados);
     }
 }

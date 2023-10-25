@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="395.0" prefWidth="702.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.maquinacafe.Cafeteria">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="395.0" prefWidth="702.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.maquinacafe.Cafeteria">
    <children>
       <ImageView fitHeight="395.0" fitWidth="819.0" layoutX="179.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-117.0" AnchorPane.topAnchor="0.0">
          <image>
@@ -54,7 +54,7 @@
           <TableColumn fx:id="tipoColumn" prefWidth="72.0" text="Tipo" />
           <TableColumn fx:id="tamañoColumn" prefWidth="100.0" text="Tamaño" />
             <TableColumn fx:id="cantidadColumn" prefWidth="86.00006103515625" text="Cantidad" />
-            <TableColumn fx:id="precioColumn" prefWidth="42.0" text="Precio" />
+            <TableColumn fx:id="precioColumn" prefWidth="45.0" text="Precio" />
         </columns>
       </TableView>
       <Button id="botonSaldo" fx:id="btnSaldo" layoutX="342.0" layoutY="185.0" mnemonicParsing="false" onAction="#añadirSaldo" prefHeight="26.0" prefWidth="24.0" style="-fx-background-color: white;" text="+" textAlignment="CENTER" textFill="#b47c4d">
