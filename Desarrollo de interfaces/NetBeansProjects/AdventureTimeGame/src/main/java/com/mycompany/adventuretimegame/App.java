@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -25,10 +26,10 @@ public class App extends Application {
         primaryStage.setResizable(false);
 
         // Establece el título de la ventana
-        primaryStage.setTitle("Mi Aplicación JavaFX");
-                
-        primaryStage.setWidth(1280); // Establece el ancho deseado
-        primaryStage.setHeight(720); // Establece el alto deseado
+        primaryStage.setTitle("Adventure Time Fight");
+        primaryStage.getIcons().add(new Image("/resources/img/Logo.png"));        
+        primaryStage.setWidth(1024); // Establece el ancho deseado
+        primaryStage.setHeight(576); // Establece el alto deseado
         primaryStage.centerOnScreen(); // Centra la ventana en la pantalla
 
         // Muestra la ventana

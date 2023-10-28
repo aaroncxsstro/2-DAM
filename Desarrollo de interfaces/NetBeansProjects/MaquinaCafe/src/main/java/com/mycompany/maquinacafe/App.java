@@ -27,7 +27,7 @@ public class App extends Application {
         
         scene.getStylesheets().add(getClass().getResource("/resources/style.css").toExternalForm());
 
-       Image icon = new Image(App.class.getResourceAsStream("/resources/cafe.png"));
+       Image icon = new Image(App.class.getResourceAsStream("/img/Logo.png"));
 
         stage.getIcons().add(icon);
 
