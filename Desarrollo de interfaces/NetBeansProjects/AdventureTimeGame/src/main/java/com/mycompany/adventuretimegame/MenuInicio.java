@@ -1,14 +1,25 @@
 package com.mycompany.adventuretimegame;
 
+import java.io.IOException;
+import javafx.animation.PauseTransition;
 import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class MenuInicio {
+    private Stage stage;
 
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+    
     @FXML
     private ImageView btn1j;
 
@@ -59,9 +70,31 @@ void animarPulsarBoton(MouseEvent event) {
     expandirAnimacion.setToY(1.0);
     expandirAnimacion.play();
     
-    
+   PauseTransition pause = new PauseTransition(Duration.seconds(2));
+
+    expandirAnimacion.setOnFinished(eventFinished -> {
+        cambiarAVistaMenuSeleccion();
+    });
+
+    // Reproduce la animación de escala y luego la pausa
+    expandirAnimacion.play();
+    pause.play();
 }
-    
+
+    @FXML
+void cambiarAVistaMenuSeleccion() {
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("pantallaseleccion.fxml"));
+        Parent root = loader.load();
+
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+
+
+    } catch (IOException e) {
+        e.printStackTrace(); 
+    }
+}
   
     
 }

@@ -20,6 +20,9 @@ public class App extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("menuinicio.fxml"));
         Parent root = loader.load();
 
+        MenuInicio controller = loader.getController();
+        controller.setStage(primaryStage);
+        
         Scene scene = new Scene(root);
 
         primaryStage.setScene(scene);
