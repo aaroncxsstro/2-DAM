@@ -4,71 +4,76 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.adventuretimegame.PantallaSeleccion">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.adventuretimegame.PantallaSeleccion">
    <children>
       <ImageView fitHeight="580.0" fitWidth="1042.0" layoutX="-3.0" layoutY="-15.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../resources/img/Interfaces/PantallaSeleccion/Botones/MenuPantalla.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="577.0" fitWidth="1107.0" layoutX="1.0" layoutY="-18.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="rejilla" fitHeight="577.0" fitWidth="1107.0" layoutX="1.0" layoutY="-34.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../resources/img/Interfaces/PantallaSeleccion/Botones/rejilla.png" />
+            <Image url="@../../../resources/img/Interfaces/PantallaSeleccion/Botones/rejillaAzul.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="espacioMuñecoIzq" fitHeight="534.0" fitWidth="388.0" layoutX="3.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../resources/img/Interfaces/PantallaSeleccion/Botones/Muñecos/Vaci.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="espacioMuñecoDer" fitHeight="534.0" fitWidth="388.0" layoutX="677.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="espacioMuñecoIzq" fitHeight="500.0" fitWidth="299.0" layoutX="27.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../resources/img/Interfaces/PantallaSeleccion/Botones/Muñecos/Vaci.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="finnCasilla" fitHeight="128.0" fitWidth="122.0" layoutX="329.0" layoutY="153.0" onMouseClicked="#animarBoton" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="espacioMuñecoDer" fitHeight="500.0" fitWidth="292.0" layoutX="711.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../resources/img/Interfaces/PantallaSeleccion/Botones/Muñecos/Vaci.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="finnCasilla" fitHeight="128.0" fitWidth="122.0" layoutX="329.0" layoutY="137.0" onMouseClicked="#animarBoton" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../resources/img/Interfaces/PantallaSeleccion/Botones/FinnSin.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="jakeCasilla" fitHeight="128.0" fitWidth="122.0" layoutX="454.0" layoutY="152.0" onMouseClicked="#animarBoton" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="jakeCasilla" fitHeight="128.0" fitWidth="122.0" layoutX="454.0" layoutY="136.0" onMouseClicked="#animarBoton" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../resources/img/Interfaces/PantallaSeleccion/Botones/JakeSin.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="gunterCasilla" fitHeight="128.0" fitWidth="122.0" layoutX="579.0" layoutY="152.0" onMouseClicked="#animarBoton" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="gunterCasilla" fitHeight="128.0" fitWidth="122.0" layoutX="579.0" layoutY="136.0" onMouseClicked="#animarBoton" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../resources/img/Interfaces/PantallaSeleccion/Botones/GunterSin.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="LlamaCasilla" fitHeight="128.0" fitWidth="122.0" layoutX="329.0" layoutY="282.0" onMouseClicked="#animarBoton" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="LlamaCasilla" fitHeight="128.0" fitWidth="122.0" layoutX="329.0" layoutY="266.0" onMouseClicked="#animarBoton" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../resources/img/Interfaces/PantallaSeleccion/Botones/LlamaSin.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="marcelineCasilla" fitHeight="128.0" fitWidth="122.0" layoutX="454.0" layoutY="282.0" onMouseClicked="#animarBoton" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="marcelineCasilla" fitHeight="128.0" fitWidth="122.0" layoutX="454.0" layoutY="266.0" onMouseClicked="#animarBoton" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../resources/img/Interfaces/PantallaSeleccion/Botones/MarcelineSin.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="reyHieloCasilla" fitHeight="128.0" fitWidth="122.0" layoutX="579.0" layoutY="283.0" onMouseClicked="#animarBoton" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="reyHieloCasilla" fitHeight="128.0" fitWidth="122.0" layoutX="579.0" layoutY="267.0" onMouseClicked="#animarBoton" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../resources/img/Interfaces/PantallaSeleccion/Botones/ReyHieloSin.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="limoncioCasilla" fitHeight="128.0" fitWidth="122.0" layoutX="329.0" layoutY="411.0" onMouseClicked="#animarBoton" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="limoncioCasilla" fitHeight="128.0" fitWidth="122.0" layoutX="329.0" layoutY="395.0" onMouseClicked="#animarBoton" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../resources/img/Interfaces/PantallaSeleccion/Botones/LimoncioSin.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="cakeCasilla" fitHeight="128.0" fitWidth="122.0" layoutX="454.0" layoutY="412.0" onMouseClicked="#animarBoton" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="cakeCasilla" fitHeight="128.0" fitWidth="122.0" layoutX="454.0" layoutY="396.0" onMouseClicked="#animarBoton" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../resources/img/Interfaces/PantallaSeleccion/Botones/CakeSin.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="mentaCasilla" fitHeight="128.0" fitWidth="122.0" layoutX="580.0" layoutY="412.0" onMouseClicked="#animarBoton" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="mentaCasilla" fitHeight="128.0" fitWidth="122.0" layoutX="580.0" layoutY="396.0" onMouseClicked="#animarBoton" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../resources/img/Interfaces/PantallaSeleccion/Botones/MentaSin.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="botonJugador" fitHeight="150.0" fitWidth="266.0" layoutX="379.0" layoutY="28.0" onMouseClicked="#cambiarJugador" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../resources/img/Interfaces/PantallaSeleccion/BotonJugador1.png" />
          </image>
       </ImageView>
    </children>

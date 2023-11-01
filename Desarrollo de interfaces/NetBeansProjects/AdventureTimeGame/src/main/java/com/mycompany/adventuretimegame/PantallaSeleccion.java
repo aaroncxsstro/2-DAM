@@ -44,7 +44,43 @@ public class PantallaSeleccion {
     @FXML
     private ImageView espacioMuñecoDer;
     
-     private ImageView botonSeleccionado = null;
+    @FXML
+    private ImageView botonJugador;
+    
+    @FXML
+    private ImageView rejilla;
+    
+    
+    private ImageView botonSeleccionado = null;
+    
+    private boolean jugador1= true;
+    
+    @FXML
+    void cambiarJugador(MouseEvent event){
+           Image rejillaAzul = new Image("/resources/img/interfaces/PantallaSeleccion/Botones/rejillaAzul.png");
+           Image rejillaRoja = new Image("/resources/img/interfaces/PantallaSeleccion/Botones/rejillaRoja.png");
+           Image botonAzul = new Image("/resources/img/interfaces/PantallaSeleccion/BotonJugador1.png");
+           Image botonRojo = new Image("/resources/img/interfaces/PantallaSeleccion/BotonJugador2.png");
+           
+            String nombreSin = botonSeleccionado.getId().substring(0, botonSeleccionado.getId().length() - 7) + "Sin.png";
+         
+            Image imagenSin = new Image("/resources/img/interfaces/PantallaSeleccion/Botones/" + nombreSin);
+
+            botonSeleccionado.setImage(imagenSin);
+            
+            
+
+       
+        if (jugador1){
+           botonJugador.setImage(botonRojo);
+           rejilla.setImage(rejillaRoja);
+           jugador1=false;
+        }else{
+           botonJugador.setImage(botonAzul);
+           rejilla.setImage(rejillaAzul);
+           jugador1=true;
+        }
+    }
      
     @FXML
     void animarBoton(MouseEvent event) {
@@ -69,9 +105,16 @@ public class PantallaSeleccion {
         
         // Cambia la imagen y ejecuta la animación del botón actual
         String nombreCon = boton.getId().substring(0, boton.getId().length() - 7) + "Con.png";
-              String nombreMun = botonSeleccionado.getId().substring(0, botonSeleccionado.getId().length() - 7) + "D.png";
+                    if(jugador1){
+            String nombreMun = botonSeleccionado.getId().substring(0, botonSeleccionado.getId().length() - 7) + "D.png";
             Image imagenMun = new Image("/resources/img/interfaces/PantallaSeleccion/Botones/Munecos/" + nombreMun);
-            espacioMuñecoIzq.setImage(imagenMun);
+            espacioMuñecoIzq.setImage(imagenMun);  
+            }else{
+            String nombreMun = botonSeleccionado.getId().substring(0, botonSeleccionado.getId().length() - 7) + "I.png";
+            Image imagenMun = new Image("/resources/img/interfaces/PantallaSeleccion/Botones/Munecos/" + nombreMun);
+            espacioMuñecoDer.setImage(imagenMun);
+            }
+            
         
         Image nuevaImagen = new Image("/resources/img/interfaces/PantallaSeleccion/Botones/" + nombreCon);
         boton.setImage(nuevaImagen);
