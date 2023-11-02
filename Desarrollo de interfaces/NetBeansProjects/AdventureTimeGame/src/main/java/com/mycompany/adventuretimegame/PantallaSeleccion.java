@@ -22,6 +22,9 @@ public class PantallaSeleccion {
         this.stage = stage;
     }
     
+    private String nombreJugador1;
+    private String nombreJugador2;
+
         @FXML
     private AnchorPane pane2;
         
@@ -35,7 +38,7 @@ public class PantallaSeleccion {
     private ImageView gunterCasilla;
 
     @FXML
-    private ImageView LlamaCasilla;
+    private ImageView llamaCasilla;
 
     @FXML
     private ImageView marcelineCasilla;
@@ -91,6 +94,7 @@ void cambiarJugador(MouseEvent event) {
         botonJugador.setImage(botonRojo);
         rejilla.setImage(rejillaRoja);
         jugador1 = false;
+        
 
     } else {
         botonJugador.setImage(botonAzul);
@@ -123,10 +127,12 @@ void cambiarJugador(MouseEvent event) {
 
         String nombreCon = boton.getId().substring(0, boton.getId().length() - 7) + "Con.png";
                     if(jugador1){
+         nombreJugador1=botonSeleccionado.getId().substring(0, botonSeleccionado.getId().length()-7);
             String nombreMun = botonSeleccionado.getId().substring(0, botonSeleccionado.getId().length() - 7) + "D.png";
             Image imagenMun = new Image("/resources/img/interfaces/PantallaSeleccion/Botones/Munecos/" + nombreMun);
             espacioMuñecoIzq.setImage(imagenMun);  
             }else{
+       nombreJugador2=botonSeleccionado.getId().substring(0, botonSeleccionado.getId().length()-7);
             String nombreMun = botonSeleccionado.getId().substring(0, botonSeleccionado.getId().length() - 7) + "I.png";
             Image imagenMun = new Image("/resources/img/interfaces/PantallaSeleccion/Botones/Munecos/" + nombreMun);
             espacioMuñecoDer.setImage(imagenMun);
@@ -186,7 +192,7 @@ void animarPulsarBoton(MouseEvent event) {
    PauseTransition pause = new PauseTransition(Duration.seconds(2));
 
     expandirAnimacion.setOnFinished(eventFinished -> {
-        cambiarAVistaMenuSeleccion();
+        cambiarAVistaMenuSeleccion(espacioMuñecoDer.getId());
     });
 
     expandirAnimacion.play();
@@ -194,12 +200,15 @@ void animarPulsarBoton(MouseEvent event) {
 }
     
     @FXML
-void cambiarAVistaMenuSeleccion() {
+void cambiarAVistaMenuSeleccion(String id) {
     try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("mapa.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("pantallamapa.fxml"));
         Parent root = loader.load();
         
-        PantallaSeleccion controlador= loader.getController();
+        
+        PantallaMapa controlador= loader.getController();
+        controlador.setP1(nombreJugador1);
+        controlador.setP2(nombreJugador2);
         pane2.getChildren().setAll(root);
         
     } catch (IOException e) {

@@ -33,7 +33,7 @@
             <Image url="@../../../resources/img/Interfaces/PantallaSeleccion/Botones/GunterSin.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="LlamaCasilla" fitHeight="128.0" fitWidth="122.0" layoutX="329.0" layoutY="266.0" onMouseClicked="#animarBoton" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="llamaCasilla" fitHeight="128.0" fitWidth="122.0" layoutX="329.0" layoutY="266.0" onMouseClicked="#animarBoton" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../resources/img/Interfaces/PantallaSeleccion/Botones/LlamaSin.png" />
          </image>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="pane3" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.adventuretimegame.PantallaMapa">
+   <children>
+      <ImageView fitHeight="589.0" fitWidth="1038.0" layoutX="-1.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../resources/img/Interfaces/PantallaSeleccionMapa/MenuSeleccion.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="Arbol" fitHeight="169.0" fitWidth="242.0" layoutX="223.0" layoutY="121.0" onMouseClicked="#animarPulsarBoton" onMouseEntered="#animarAmpliacionBoton" onMouseExited="#animarReinicioBoton" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../resources/img/Interfaces/PantallaSeleccionMapa/MapaArbol.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="Hielo" fitHeight="169.0" fitWidth="243.0" layoutX="514.0" layoutY="123.0" onMouseClicked="#animarPulsarBoton" onMouseEntered="#animarAmpliacionBoton" onMouseExited="#animarReinicioBoton" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../resources/img/Interfaces/PantallaSeleccionMapa/MapaHielo.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="play" fitHeight="150.0" fitWidth="200.0" layoutX="391.0" layoutY="339.0" onMouseClicked="#animarPulsarBoton" onMouseEntered="#animarAmpliacionBoton" onMouseExited="#animarReinicioBoton" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>
