@@ -8,8 +8,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -20,6 +20,9 @@ public class MenuInicio {
         this.stage = stage;
     }
     
+        @FXML
+    private AnchorPane pane;
+        
     @FXML
     private ImageView btn1j;
 
@@ -57,7 +60,7 @@ void animarAmpliacionBoton(MouseEvent event) {
         @FXML
 void animarPulsarBoton(MouseEvent event) {
     ImageView boton = (ImageView) event.getSource();
-    String idDelBoton = boton.getId();//Para saber que ventana cambiar
+    String idDelBoton = boton.getId();
     
     ScaleTransition expandirAnimacion = new ScaleTransition(Duration.seconds(0.3), boton);
     expandirAnimacion.setFromX(1.0);
@@ -86,9 +89,10 @@ void cambiarAVistaMenuSeleccion() {
     try {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("pantallaseleccion.fxml"));
         Parent root = loader.load();
-
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
+        
+        PantallaSeleccion controlador= loader.getController();
+        pane.getChildren().setAll(root);
+        
 
 
     } catch (IOException e) {
