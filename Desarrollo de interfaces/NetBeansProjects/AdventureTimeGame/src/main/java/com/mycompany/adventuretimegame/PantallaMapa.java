@@ -143,8 +143,6 @@ void cambiarAVistaJuego(ImageView idDelBoton) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("juego.fxml"));
         Parent root = loader.load();
         
-   
-        
         Juego controlador= loader.getController();
         controlador.setEscenario(Escenario);
         controlador.setP1(P1);
