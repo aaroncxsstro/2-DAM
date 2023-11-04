@@ -149,12 +149,17 @@ void animarPulsarBoton(MouseEvent event) {
            switch (idDelBoton){
             case "attack1":
             animarAtaqueJ1();
+            
             break;
             case "super1":
-                
+            animarSuperJ1();
+            break;
             case "attack2":
             animarAtaqueJ2();
+            break;
             case "super2":
+            animarSuperJ2();
+            break;
         }
            
     expandirAnimacion.setOnFinished(eventFinished -> {
@@ -178,7 +183,7 @@ void animarPulsarBoton(MouseEvent event) {
         
        Image image2 = new Image("/resources/img/Personajes/"+p1+"/Quieto/"+p1+".gif");
         // Crear un Timeline con una duración que coincide con la duración de la animación del GIF
-    Duration gifDuration = Duration.seconds(1); // Ajusta la duración según tu animación
+    Duration gifDuration = Duration.seconds(4); // Ajusta la duración según tu animación
     Timeline timeline = new Timeline(new KeyFrame(gifDuration, new EventHandler<ActionEvent>() {
         @Override
         public void handle(ActionEvent event) {
@@ -203,7 +208,7 @@ void animarPulsarBoton(MouseEvent event) {
         
        Image image2 = new Image("/resources/img/Personajes/"+p2+"/Quieto/"+p2+"D.gif");
         // Crear un Timeline con una duración que coincide con la duración de la animación del GIF
-    Duration gifDuration = Duration.seconds(1); // Ajusta la duración según tu animación
+    Duration gifDuration = Duration.seconds(4); // Ajusta la duración según tu animación
     Timeline timeline = new Timeline(new KeyFrame(gifDuration, new EventHandler<ActionEvent>() {
         @Override
         public void handle(ActionEvent event) {
@@ -216,7 +221,53 @@ void animarPulsarBoton(MouseEvent event) {
     timeline.play();
 }
 
+    private void animarSuperJ1() {
+  
+        Image image = new Image("/resources/img/Personajes/"+p1+"/Super/"+p1+".gif");
+        personaje1.setImage(image);
+        personaje1.setFitWidth(656);
+        personaje1.setFitHeight(407);
+        personaje1.setLayoutX(-110);
+        personaje1.setLayoutY(140);
+        
+       Image image2 = new Image("/resources/img/Personajes/"+p1+"/Quieto/"+p1+".gif");
+        // Crear un Timeline con una duración que coincide con la duración de la animación del GIF
+    Duration gifDuration = Duration.seconds(4); // Ajusta la duración según tu animación
+    Timeline timeline = new Timeline(new KeyFrame(gifDuration, new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent event) {
+            // Cambiar la imagen a image2 después de que termine la animación del GIF
+            personaje1.setImage(image2);
+        }
+    }));
 
+    // Iniciar el Timeline
+    timeline.play();
+}
+
+    private void animarSuperJ2() {
+  
+        Image image = new Image("/resources/img/Personajes/"+p2+"/Super/"+p2+"D.gif");
+        personaje2.setImage(image);
+        personaje2.setFitWidth(656);
+        personaje2.setFitHeight(407);
+        personaje2.setLayoutX(500);
+        personaje2.setLayoutY(140);
+        
+       Image image2 = new Image("/resources/img/Personajes/"+p2+"/Quieto/"+p2+"D.gif");
+        // Crear un Timeline con una duración que coincide con la duración de la animación del GIF
+    Duration gifDuration = Duration.seconds(4); // Ajusta la duración según tu animación
+    Timeline timeline = new Timeline(new KeyFrame(gifDuration, new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent event) {
+            // Cambiar la imagen a image2 después de que termine la animación del GIF
+            personaje2.setImage(image2);
+        }
+    }));
+
+    // Iniciar el Timeline
+    timeline.play();
+}
 
     
 }
