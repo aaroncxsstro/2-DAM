@@ -92,7 +92,7 @@ public class Personaje {
             this.setVida(5);
             this.setAtaque(4);
             this.setTiempoAtaque(0.8);
-            this.setTiempoSuper(2);
+            this.setTiempoSuper(5);
             break;         
         case "reyHielo":
             this.setVida(2);
