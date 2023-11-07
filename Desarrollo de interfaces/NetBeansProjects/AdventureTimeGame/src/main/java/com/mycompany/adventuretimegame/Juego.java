@@ -13,6 +13,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -114,6 +115,16 @@ public class Juego {
         
     @FXML
     private ImageView personaje1dash;
+    
+    @FXML
+    ProgressBar pbJ1 = new ProgressBar(1);
+    
+    @FXML
+    private ImageView logoj1;
+    
+    @FXML
+    private ImageView logoj2;
+
 
     @FXML
     public void comenzar(){
@@ -181,26 +192,38 @@ void animarPulsarBoton(MouseEvent event) {
         Image dashgif = new Image("/resources/img/Personajes/"+p1+"/Ataque/dash.gif");
         dash.setImage(dashgif);
         personaje1.setImage(image);
-
+        attack1.setVisible(false);
+        attack2.setVisible(false);
+        super1.setVisible(false);
+        super2.setVisible(false);
         personaje1.setFitWidth(656);
         personaje1.setFitHeight(407);
         personaje1.setLayoutX(-110);
         personaje1.setLayoutY(140);
         double duracion=jugador1.getTiempoAtaque();
-        
        Image image2 = new Image("/resources/img/Personajes/"+p1+"/Quieto/"+p1+".gif");
-       
-    Duration gifDuration = Duration.seconds(duracion); // Ajusta la duración según tu animación
-    Timeline timeline = new Timeline(new KeyFrame(gifDuration, new EventHandler<ActionEvent>() {
+             double duracionBotones=jugador1.getTiempoDashAtaque();
+    Duration botonDuration = Duration.seconds(duracionBotones); 
+    Timeline timelineBotones = new Timeline(new KeyFrame(botonDuration, new EventHandler<ActionEvent>() {
         @Override
         public void handle(ActionEvent event) {
-            // Cambiar la imagen a image2 después de que termine la animación del GIF
+        attack1.setVisible(true);
+        attack2.setVisible(true);
+        super1.setVisible(true);
+        super2.setVisible(true);
+        }
+    }));
+        Duration gifDuration = Duration.seconds(duracion); 
+        Timeline timeline = new Timeline(new KeyFrame(gifDuration, new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent event) {
             personaje1.setImage(image2);
         }
     }));
-
+        
     // Iniciar el Timeline
     timeline.play();
+    timelineBotones.play();
 }
     
         public void animarAtaqueJ2(){
@@ -208,6 +231,10 @@ void animarPulsarBoton(MouseEvent event) {
         
         Image image = new Image("/resources/img/Personajes/"+p2+"/Ataque/"+p2+"D.gif");
         Image dashgif = new Image("/resources/img/Personajes/"+p2+"/Ataque/dashD.gif");
+         attack1.setVisible(false);
+        attack2.setVisible(false);
+        super1.setVisible(false);
+        super2.setVisible(false);
         dash.setImage(dashgif);
         personaje2.setImage(image);
         personaje2.setFitWidth(656);
@@ -217,24 +244,41 @@ void animarPulsarBoton(MouseEvent event) {
         double duracion=jugador2.getTiempoAtaque();
                 
        Image image2 = new Image("/resources/img/Personajes/"+p2+"/Quieto/"+p2+"D.gif");
-        // Crear un Timeline con una duración que coincide con la duración de la animación del GIF
-    Duration gifDuration = Duration.seconds(duracion); // Ajusta la duración según tu animación
+      double duracionBotones=jugador2.getTiempoDashAtaque();
+      
+    Duration botonDuration = Duration.seconds(duracionBotones); 
+    Timeline timelineBotones = new Timeline(new KeyFrame(botonDuration, new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent event) {
+        attack1.setVisible(true);
+        attack2.setVisible(true);
+        super1.setVisible(true);
+        super2.setVisible(true);
+        }
+    }));
+    
+    Duration gifDuration = Duration.seconds(duracion); 
     Timeline timeline = new Timeline(new KeyFrame(gifDuration, new EventHandler<ActionEvent>() {
         @Override
         public void handle(ActionEvent event) {
-            // Cambiar la imagen a image2 después de que termine la animación del GIF
+
             personaje2.setImage(image2);
         }
     }));
 
-    // Iniciar el Timeline
+
     timeline.play();
+    timelineBotones.play();
 }
 
     private void animarSuperJ1() {
   
         Image image = new Image("/resources/img/Personajes/"+p1+"/Super/"+p1+".gif");
         Image dashgif = new Image("/resources/img/Personajes/"+p1+"/Super/dash.gif");
+        attack1.setVisible(false);
+        attack2.setVisible(false);
+        super1.setVisible(false);
+        super2.setVisible(false);
         dash.setImage(dashgif);
         personaje1.setImage(image);
         personaje1.setFitWidth(656);
@@ -244,24 +288,39 @@ void animarPulsarBoton(MouseEvent event) {
         double duracion=jugador1.getTiempoSuper();
         
        Image image2 = new Image("/resources/img/Personajes/"+p1+"/Quieto/"+p1+".gif");
-        // Crear un Timeline con una duración que coincide con la duración de la animación del GIF
-    Duration gifDuration = Duration.seconds(duracion); // Ajusta la duración según tu animación
+        double duracionBotones=jugador1.getTiempoDashSuper();
+        Duration botonDuration = Duration.seconds(duracionBotones); 
+    Timeline timelineBotones = new Timeline(new KeyFrame(botonDuration, new EventHandler<ActionEvent>() {
+        
+        @Override
+        public void handle(ActionEvent event) {
+        attack1.setVisible(true);
+        attack2.setVisible(true);
+        super1.setVisible(true);
+        super2.setVisible(true);
+        }
+    }));
+    Duration gifDuration = Duration.seconds(duracion);
     Timeline timeline = new Timeline(new KeyFrame(gifDuration, new EventHandler<ActionEvent>() {
         @Override
         public void handle(ActionEvent event) {
-            // Cambiar la imagen a image2 después de que termine la animación del GIF
             personaje1.setImage(image2);
         }
     }));
 
     // Iniciar el Timeline
     timeline.play();
+    timelineBotones.play();
 }
 
     private void animarSuperJ2() {
   
         Image image = new Image("/resources/img/Personajes/"+p2+"/Super/"+p2+"D.gif");
         Image dashgif = new Image("/resources/img/Personajes/"+p2+"/Super/dashD.gif");
+        attack1.setVisible(false);
+        attack2.setVisible(false);
+        super1.setVisible(false);
+        super2.setVisible(false);
         dash.setImage(dashgif);
         personaje2.setImage(image);
         personaje2.setFitWidth(656);
@@ -270,18 +329,30 @@ void animarPulsarBoton(MouseEvent event) {
         personaje2.setLayoutY(140);
         double duracion=jugador2.getTiempoSuper();
        Image image2 = new Image("/resources/img/Personajes/"+p2+"/Quieto/"+p2+"D.gif");
-        // Crear un Timeline con una duración que coincide con la duración de la animación del GIF
-    Duration gifDuration = Duration.seconds(duracion); // Ajusta la duración según tu animación
+       double duracionBotones=jugador2.getTiempoDashSuper();
+        Duration botonDuration = Duration.seconds(duracionBotones); 
+    Timeline timelineBotones = new Timeline(new KeyFrame(botonDuration, new EventHandler<ActionEvent>() {
+        
+        @Override
+        public void handle(ActionEvent event) {
+        attack1.setVisible(true);
+        attack2.setVisible(true);
+        super1.setVisible(true);
+        super2.setVisible(true);
+        }
+    }));
+    
+    Duration gifDuration = Duration.seconds(duracion); 
     Timeline timeline = new Timeline(new KeyFrame(gifDuration, new EventHandler<ActionEvent>() {
         @Override
         public void handle(ActionEvent event) {
-            // Cambiar la imagen a image2 después de que termine la animación del GIF
             personaje2.setImage(image2);
         }
     }));
 
     // Iniciar el Timeline
     timeline.play();
+    timelineBotones.play();
 }
 
     
