@@ -15,6 +15,26 @@ public class Personaje {
     private Image sprite;
 
     private double tiempoAtaque;
+    
+    private int suerte;
+
+    public int getSuerte() {
+        return suerte;
+    }
+
+    public void setSuerte(int suerte) {
+        this.suerte = suerte;
+    }
+    
+    private double vidaTotal=1;
+
+    public double getVidaTotal() {
+        return vidaTotal;
+    }
+
+    public void setVidaTotal(double vidaTotal) {
+        this.vidaTotal = vidaTotal;
+    }
 
     public double getTiempoAtaque() {
         return tiempoAtaque;
@@ -89,6 +109,7 @@ public class Personaje {
         case "finn": 
             this.setVida(3);
             this.setAtaque(3);
+            this.setSuerte(3);
             this.setTiempoAtaque(0.6);
             this.setTiempoSuper(0.9);
             this.setTiempoDashAtaque(1.7);
@@ -97,6 +118,7 @@ public class Personaje {
         case "jake": 
             this.setVida(3);
             this.setAtaque(4);
+             this.setSuerte(2);
             this.setTiempoAtaque(1);
             this.setTiempoSuper(1);
             this.setTiempoDashAtaque(1.5);
@@ -105,6 +127,7 @@ public class Personaje {
         case "gunter": 
             this.setVida(3);
             this.setAtaque(4);
+             this.setSuerte(2);
             this.setTiempoAtaque(1);
             this.setTiempoSuper(1.2);          
             this.setTiempoDashAtaque(2.0);
@@ -113,6 +136,7 @@ public class Personaje {
         case "llama":
             this.setVida(2);
             this.setAtaque(5);
+             this.setSuerte(3);
             this.setTiempoAtaque(0.5);
             this.setTiempoSuper(1.6);
             this.setTiempoDashAtaque(2.3);
@@ -121,6 +145,7 @@ public class Personaje {
         case "marceline":
             this.setVida(5);
             this.setAtaque(4);
+             this.setSuerte(1);
             this.setTiempoAtaque(0.8);
             this.setTiempoSuper(5);
             this.setTiempoDashAtaque(1.9);
@@ -129,14 +154,16 @@ public class Personaje {
         case "reyHielo":
             this.setVida(2);
             this.setAtaque(3);
+             this.setSuerte(3);
             this.setTiempoAtaque(0.4);
             this.setTiempoSuper(0.9);
             this.setTiempoDashAtaque(1.2);
             this.setTiempoDashSuper(1.5);
             break;             
         case "limoncio":
-            this.setVida(1);
+            this.setVida(2);
             this.setAtaque(3);
+             this.setSuerte(5);
             this.setTiempoAtaque(0.6);
             this.setTiempoSuper(0.6);
             this.setTiempoDashAtaque(1.1);
@@ -146,6 +173,7 @@ public class Personaje {
         case "cake":
             this.setVida(4);
             this.setAtaque(3);
+             this.setSuerte(3);
             this.setTiempoAtaque(1.1);
             this.setTiempoSuper(1.5);
             this.setTiempoDashAtaque(1.7);
@@ -155,6 +183,7 @@ public class Personaje {
         case "menta":
             this.setVida(4);
             this.setAtaque(2);
+             this.setSuerte(4);
             this.setTiempoAtaque(0.7);
             this.setTiempoSuper(0.6);
             this.setTiempoDashAtaque(1.2);

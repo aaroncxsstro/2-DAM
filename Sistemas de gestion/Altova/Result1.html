@@ -1,0 +1,257 @@
+﻿<html>
+<head>
+<META http-equiv='Content-Type' content='text/html; charset=UTF-8'></META>
+</head>
+<body>
+<table border='1' cellSpacing='0'>
+<!--
+# select vendedores.nombre_ven as nombre_vendedor,vendedores.apellidos_ven as apellidos_vendedor,provincias.nom_provincia as provincia_vendedor,comunidades.nom_comunidad as comunidad_autonoma_vendedor,productos.tipo_producto as tipo_de_producto,productos.nombre_producto as nombre_de_producto,productos.stock as stock,ventas.unidades_vendidas as unidades_vendidas,productos.precio_unidad as precio_unitario,ventas.fecha_operacion as fecha_de_operacion,ventas.unidades_vendidas * productos.precio_unidad as Importe_operacionfrom ventas, vendedores, provincias, comunidades, productoswhere ventas.cod_ven = vendedores.cod_ven andventas.cod_producto = productos.cod_producto andvendedores.cod_provincia = provincias.cod_provincia andcomunidades.cod_comunidad = provincias.cod_comunidad andventas.fecha_operacion BETWEEN '2022-01-01' AND '2023-12-31'
+# nombre_ven varchar (2147483647)
+# apellidos_ven varchar (2147483647)
+# nom_provincia varchar (2147483647)
+# nom_comunidad varchar (2147483647)
+# tipo_producto varchar (2147483647)
+# nombre_producto varchar (2147483647)
+# stock varchar (2147483647)
+# unidades_vendidas int
+# precio_unidad double
+# fecha_operacion date
+# Importe_operacion double
+-->
+<tr>
+<td>nombre_ven</td>
+<td>apellidos_ven</td>
+<td>nom_provincia</td>
+<td>nom_comunidad</td>
+<td>tipo_producto</td>
+<td>nombre_producto</td>
+<td>stock</td>
+<td>unidades_vendidas</td>
+<td>precio_unidad</td>
+<td>fecha_operacion</td>
+<td>Importe_operacion</td>
+</tr>
+<tr>
+<td>Pedro</td>
+<td>Martínez de la Rosa</td>
+<td>Burgos</td>
+<td>Castilla y León</td>
+<td>Disco Duro</td>
+<td>Western Digital 22TB</td>
+<td>S</td>
+<td>5</td>
+<td>660</td>
+<td>2022-12-14</td>
+<td>3300</td>
+</tr>
+<tr>
+<td>Pedro</td>
+<td>Martínez de la Rosa</td>
+<td>Burgos</td>
+<td>Castilla y León</td>
+<td>Procesador</td>
+<td>AMD Ryzen 5600</td>
+<td>S</td>
+<td>2</td>
+<td>155</td>
+<td>2022-07-08</td>
+<td>310</td>
+</tr>
+<tr>
+<td>Maria</td>
+<td>García López</td>
+<td>Huelva</td>
+<td>Andalucía</td>
+<td>Procesador</td>
+<td>Intel Core I9 10980</td>
+<td>N</td>
+<td>2</td>
+<td>1280</td>
+<td>2023-02-12</td>
+<td>2560</td>
+</tr>
+<tr>
+<td>Maria</td>
+<td>García López</td>
+<td>Huelva</td>
+<td>Andalucía</td>
+<td>Procesador</td>
+<td>Intel Core I9 10980</td>
+<td>N</td>
+<td>3</td>
+<td>1280</td>
+<td>2023-09-20</td>
+<td>3840</td>
+</tr>
+<tr>
+<td>Antonio</td>
+<td>Gómez Vélez</td>
+<td>Cadiz</td>
+<td>Andalucía</td>
+<td>Disco Duro</td>
+<td>Seagate Barracuda 8TB</td>
+<td>S</td>
+<td>4</td>
+<td>180</td>
+<td>2023-09-01</td>
+<td>720</td>
+</tr>
+<tr>
+<td>Mateo</td>
+<td>Villa Mar</td>
+<td>Ourense</td>
+<td>Galicia</td>
+<td>Procesador</td>
+<td>Intel Core i5 12600</td>
+<td>S</td>
+<td>1</td>
+<td>245</td>
+<td>2022-12-18</td>
+<td>245</td>
+</tr>
+<tr>
+<td>Mateo</td>
+<td>Villa Mar</td>
+<td>Ourense</td>
+<td>Galicia</td>
+<td>Disco Duro</td>
+<td>Seagate Barracuda 8TB</td>
+<td>S</td>
+<td>1</td>
+<td>180</td>
+<td>2023-01-18</td>
+<td>180</td>
+</tr>
+<tr>
+<td>Ana</td>
+<td>Pérez Ruíz</td>
+<td>Madrid</td>
+<td>Madrid</td>
+<td>Tarjeta de Video</td>
+<td>RTX 4090</td>
+<td>S</td>
+<td>2</td>
+<td>2000</td>
+<td>2023-04-12</td>
+<td>4000</td>
+</tr>
+<tr>
+<td>Ana</td>
+<td>Pérez Ruíz</td>
+<td>Madrid</td>
+<td>Madrid</td>
+<td>Tarjeta de Video</td>
+<td>RADEON RX 580</td>
+<td>S</td>
+<td>4</td>
+<td>125</td>
+<td>2023-09-15</td>
+<td>500</td>
+</tr>
+<tr>
+<td>Jose</td>
+<td>Sánchez González</td>
+<td>Cordoba</td>
+<td>Andalucía</td>
+<td>Disco Duro</td>
+<td>Western Digital 22TB</td>
+<td>S</td>
+<td>6</td>
+<td>660</td>
+<td>2023-05-06</td>
+<td>3960</td>
+</tr>
+<tr>
+<td>Gonzalo</td>
+<td>Romero Álvarez</td>
+<td>Burgos</td>
+<td>Castilla y León</td>
+<td>Monitor</td>
+<td>Lenovo L24e-30</td>
+<td>S</td>
+<td>2</td>
+<td>90</td>
+<td>2023-05-09</td>
+<td>180</td>
+</tr>
+<tr>
+<td>Marta</td>
+<td>Navarro Alonso</td>
+<td>Madrid</td>
+<td>Madrid</td>
+<td>Tarjeta de Video</td>
+<td>RTX 4090</td>
+<td>S</td>
+<td>4</td>
+<td>2000</td>
+<td>2023-08-21</td>
+<td>8000</td>
+</tr>
+<tr>
+<td>Marta</td>
+<td>Navarro Alonso</td>
+<td>Madrid</td>
+<td>Madrid</td>
+<td>Disco Duro</td>
+<td>Seagate Barracuda 8TB</td>
+<td>S</td>
+<td>3</td>
+<td>180</td>
+<td>2023-06-15</td>
+<td>540</td>
+</tr>
+<tr>
+<td>Marta</td>
+<td>Navarro Alonso</td>
+<td>Madrid</td>
+<td>Madrid</td>
+<td>Tarjeta de Video</td>
+<td>QUADRO RTX 6000</td>
+<td>S</td>
+<td>2</td>
+<td>4000</td>
+<td>2023-02-14</td>
+<td>8000</td>
+</tr>
+<tr>
+<td>Menuel</td>
+<td>Moreno Romero</td>
+<td>Cordoba</td>
+<td>Andalucía</td>
+<td>Tarjeta de Video</td>
+<td>RADEON RX 580</td>
+<td>S</td>
+<td>7</td>
+<td>125</td>
+<td>2023-04-18</td>
+<td>875</td>
+</tr>
+<tr>
+<td>Menuel</td>
+<td>Moreno Romero</td>
+<td>Cordoba</td>
+<td>Andalucía</td>
+<td>Ratón</td>
+<td>Genesis Xenon 800</td>
+<td>S</td>
+<td>5</td>
+<td>35</td>
+<td>2023-02-12</td>
+<td>175</td>
+</tr>
+<tr>
+<td>Marisa</td>
+<td>Jiménez Domínguez</td>
+<td>Burgos</td>
+<td>Castilla y León</td>
+<td>Disco Duro</td>
+<td>Western Digital 22TB</td>
+<td>S</td>
+<td>5</td>
+<td>660</td>
+<td>2023-02-16</td>
+<td>3300</td>
+</tr>
+</table>
+</body>
+</html>

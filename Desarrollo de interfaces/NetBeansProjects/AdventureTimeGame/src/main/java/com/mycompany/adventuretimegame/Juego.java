@@ -117,14 +117,21 @@ public class Juego {
     private ImageView personaje1dash;
     
     @FXML
-    ProgressBar pbJ1 = new ProgressBar(1);
+    private ProgressBar barraj1;
+    
+      @FXML
+    private ProgressBar barraj2;
     
     @FXML
     private ImageView logoj1;
     
     @FXML
     private ImageView logoj2;
+    
+       @FXML
+    private ImageView critical;
 
+    private boolean esAtaqueCritico;
 
     @FXML
     public void comenzar(){
@@ -136,10 +143,17 @@ public class Juego {
         super2.setVisible(true);
         personaje1.setVisible(true);
         personaje2.setVisible(true);
+        barraj1.setVisible(true);
+        barraj2.setVisible(true);
          jugador1 = new Personaje(p1, true, sprite1);
          jugador2 = new Personaje(p2, false, sprite2);
         jugador1.atributos();
         jugador2.atributos();
+        Image imagen = new Image ("/resources/img/Interfaces/Juego/"+p1+".png");
+        Image imagen2 = new Image ("/resources/img/Interfaces/Juego/"+p2+".png");
+        logoj1.setImage(imagen);
+        logoj2.setImage(imagen2);
+        actualizarBarrasDeVida();
         
     }
     
@@ -164,7 +178,6 @@ void animarPulsarBoton(MouseEvent event) {
            switch (idDelBoton){
             case "attack1":
             animarAtaqueJ1();
-            
             break;
             case "super1":
             animarSuperJ1();
@@ -211,6 +224,12 @@ void animarPulsarBoton(MouseEvent event) {
         attack2.setVisible(true);
         super1.setVisible(true);
         super2.setVisible(true);
+        
+        jugador2.setVidaTotal(jugador2.getVidaTotal()-calcularDanio(jugador1, jugador2,false));
+        actualizarBarrasDeVida();
+        if(esAtaqueCritico){
+            System.out.println("Critico");
+        }
         }
     }));
         Duration gifDuration = Duration.seconds(duracion); 
@@ -254,6 +273,11 @@ void animarPulsarBoton(MouseEvent event) {
         attack2.setVisible(true);
         super1.setVisible(true);
         super2.setVisible(true);
+         jugador1.setVidaTotal(jugador1.getVidaTotal()-calcularDanio(jugador2, jugador1,false));
+        actualizarBarrasDeVida();
+        if(esAtaqueCritico){
+            System.out.println("Critico");
+        }
         }
     }));
     
@@ -298,6 +322,11 @@ void animarPulsarBoton(MouseEvent event) {
         attack2.setVisible(true);
         super1.setVisible(true);
         super2.setVisible(true);
+        jugador2.setVidaTotal(jugador2.getVidaTotal()-calcularDanio(jugador1, jugador2,true));
+        actualizarBarrasDeVida();
+        if(esAtaqueCritico){
+            System.out.println("Critico");
+        }
         }
     }));
     Duration gifDuration = Duration.seconds(duracion);
@@ -339,6 +368,11 @@ void animarPulsarBoton(MouseEvent event) {
         attack2.setVisible(true);
         super1.setVisible(true);
         super2.setVisible(true);
+         jugador1.setVidaTotal(jugador1.getVidaTotal()-calcularDanio(jugador2, jugador1,true));
+        actualizarBarrasDeVida();
+        if(esAtaqueCritico){
+            System.out.println("Critico");
+        }
         }
     }));
     
@@ -355,6 +389,57 @@ void animarPulsarBoton(MouseEvent event) {
     timelineBotones.play();
 }
 
+private double calcularDanio(Personaje atacante, Personaje atacado, boolean isSuper) {
+    double ataque = atacante.getAtaque() / 13.0;
+    double vida = atacado.getVida() / 13.0;
+    double relacionAtaqueVida = ataque / vida;
+    double suerte = atacante.getSuerte() / 5.0;
+
+    double probabilidadCritico = isSuper ? 0.25 * suerte : 0.5 * suerte;
+     esAtaqueCritico = Math.random() < probabilidadCritico;
+    System.out.println(Math.random());
+    System.out.println(probabilidadCritico);
+
+    if (esAtaqueCritico) {
+        // Es un ataque crítico, aumenta el daño
+        double danio = relacionAtaqueVida * (isSuper ? 0.3 : 0.1); // Doble daño para super ataques
+        atacado.setVidaTotal(atacado.getVidaTotal() - danio);
+        
+                critical.setVisible(true);
+        PauseTransition pauseTransition = new PauseTransition(Duration.seconds(1));
+        pauseTransition.setOnFinished(event -> critical.setVisible(false));
+        pauseTransition.play();
+
+        return danio;
+    } else {
+        // Ataque normal
+        double danio = relacionAtaqueVida * (isSuper ? 0.15 : 0.05); // Ajusta el factor de daño para super ataques
+        atacado.setVidaTotal(atacado.getVidaTotal() - danio);
+        return danio;
+    }
+}
+
+
+
+    
+    public void actualizarBarrasDeVida() {
+
+    barraj1.setProgress(jugador1.getVidaTotal()); 
+    barraj2.setProgress(jugador2.getVidaTotal());
+
+    if (jugador1.getVidaTotal() <= 0) {
+        jugador1.setVidaTotal(0.01);
+        actualizarBarrasDeVida();
+    } else {
+         barraj1.setStyle(""); 
+    }
+    if (jugador2.getVidaTotal() <= 0) {
+        jugador2.setVidaTotal(0.01);
+         actualizarBarrasDeVida();
+    } else {
+        barraj2.setStyle(""); 
+    }
+}
     
 }
 
