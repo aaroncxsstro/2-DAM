@@ -90,4 +90,12 @@
             </dependencies>
         </profile>
     </profiles>
+    <dependencies>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-media</artifactId>
+            <version>22-ea+16</version>
+            <type>jar</type>
+        </dependency>
+    </dependencies>
 </project>

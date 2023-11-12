@@ -56,7 +56,7 @@
             <Image url="@../../../resources/img/Interfaces/Juego/botonStart.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="critical" fitHeight="445.0" fitWidth="505.0" layoutX="304.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="critical" fitHeight="445.0" fitWidth="505.0" layoutX="304.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" visible="false" opacity="0.0">
          <image>
             <Image url="@../../../resources/img/Interfaces/Juego/critical.png" />
          </image>

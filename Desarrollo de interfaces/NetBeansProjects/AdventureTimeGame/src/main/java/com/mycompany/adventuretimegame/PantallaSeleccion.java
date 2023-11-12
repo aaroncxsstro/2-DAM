@@ -1,6 +1,7 @@
 package com.mycompany.adventuretimegame;
 
 import java.io.IOException;
+import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
 import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
@@ -199,20 +200,36 @@ void animarPulsarBoton(MouseEvent event) {
     pause.play();
 }
     
-    @FXML
+@FXML
 void cambiarAVistaMenuSeleccion(String id) {
     try {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("pantallamapa.fxml"));
         Parent root = loader.load();
         
-        
-        PantallaMapa controlador= loader.getController();
+        PantallaMapa controlador = loader.getController();
         controlador.setP1(nombreJugador1);
         controlador.setP2(nombreJugador2);
-        pane2.getChildren().setAll(root);
-        
+
+        // Configurar una transición de fundido
+        FadeTransition fadeOut = new FadeTransition(Duration.seconds(1), pane2);
+        fadeOut.setFromValue(1.0);
+        fadeOut.setToValue(0.0);
+
+        fadeOut.setOnFinished(e -> {
+            // Cambiar la escena después de que se complete la transición de fundido
+            pane2.getChildren().setAll(root);
+
+            // Configurar una transición de fundido para la nueva pantalla
+            FadeTransition fadeIn = new FadeTransition(Duration.seconds(1), pane2);
+            fadeIn.setFromValue(0.0);
+            fadeIn.setToValue(1.0);
+            fadeIn.play();
+        });
+
+        fadeOut.play();
+
     } catch (IOException e) {
-        e.printStackTrace(); 
+        e.printStackTrace();
     }
 }
     

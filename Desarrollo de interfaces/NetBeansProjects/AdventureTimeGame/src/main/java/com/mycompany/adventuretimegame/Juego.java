@@ -2,6 +2,7 @@ package com.mycompany.adventuretimegame;
 
 import java.io.IOException;
 import javafx.animation.AnimationTimer;
+import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.PauseTransition;
 import javafx.animation.ScaleTransition;
@@ -388,7 +389,6 @@ void animarPulsarBoton(MouseEvent event) {
     timeline.play();
     timelineBotones.play();
 }
-
 private double calcularDanio(Personaje atacante, Personaje atacado, boolean isSuper) {
     double ataque = atacante.getAtaque() / 13.0;
     double vida = atacado.getVida() / 13.0;
@@ -396,7 +396,7 @@ private double calcularDanio(Personaje atacante, Personaje atacado, boolean isSu
     double suerte = atacante.getSuerte() / 5.0;
 
     double probabilidadCritico = isSuper ? 0.25 * suerte : 0.5 * suerte;
-     esAtaqueCritico = Math.random() < probabilidadCritico;
+    esAtaqueCritico = Math.random() < probabilidadCritico;
     System.out.println(Math.random());
     System.out.println(probabilidadCritico);
 
@@ -404,13 +404,23 @@ private double calcularDanio(Personaje atacante, Personaje atacado, boolean isSu
         // Es un ataque crítico, aumenta el daño
         double danio = relacionAtaqueVida * (isSuper ? 0.3 : 0.1); // Doble daño para super ataques
         atacado.setVidaTotal(atacado.getVidaTotal() - danio);
-        
-                critical.setVisible(true);
-        PauseTransition pauseTransition = new PauseTransition(Duration.seconds(1));
-        pauseTransition.setOnFinished(event -> critical.setVisible(false));
-        pauseTransition.play();
 
+        critical.setVisible(true);
+        FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.2), critical);
+        fadeIn.setToValue(1.0);
+        fadeIn.play();
+
+        PauseTransition pauseTransition = new PauseTransition(Duration.seconds(0.9));
+        pauseTransition.setOnFinished(event -> {
+            FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.2), critical);
+            fadeOut.setToValue(0.0);
+            fadeOut.play();
+            
+        });
+        pauseTransition.play();
+        
         return danio;
+        
     } else {
         // Ataque normal
         double danio = relacionAtaqueVida * (isSuper ? 0.15 : 0.05); // Ajusta el factor de daño para super ataques
@@ -418,7 +428,6 @@ private double calcularDanio(Personaje atacante, Personaje atacado, boolean isSu
         return danio;
     }
 }
-
 
 
     

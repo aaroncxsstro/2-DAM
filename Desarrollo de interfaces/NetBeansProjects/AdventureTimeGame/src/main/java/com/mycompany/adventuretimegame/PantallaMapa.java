@@ -6,6 +6,7 @@
 package com.mycompany.adventuretimegame;
 
 import java.io.IOException;
+import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
 import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
@@ -148,6 +149,16 @@ void cambiarAVistaJuego(ImageView idDelBoton) {
         controlador.setP1(P1);
         controlador.setP2(P2);
 
+            FadeTransition fadeIn = new FadeTransition(Duration.seconds(1), pane3);
+            fadeIn.setFromValue(0.0);
+            fadeIn.setToValue(1.0);
+
+            fadeIn.setOnFinished(e -> {
+                pane3.getChildren().setAll(root);
+            });
+
+            fadeIn.play();
+            
         pane3.getChildren().setAll(root);
         
     } catch (IOException e) {
