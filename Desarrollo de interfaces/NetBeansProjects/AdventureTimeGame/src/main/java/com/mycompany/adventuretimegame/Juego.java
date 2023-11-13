@@ -44,6 +44,15 @@ public class Juego {
 
     private Image sprite2;
     
+    @FXML
+    private ProgressBar barraSuperj1;
+    
+    @FXML
+    private ProgressBar barraSuperj2;
+    
+        @FXML
+    private ImageView cartel;
+        
     public String getEscenario() {
         return Escenario;
     }
@@ -140,12 +149,14 @@ public class Juego {
         botonStart.setVisible(false);
         attack1.setVisible(true);
         attack2.setVisible(true);
-        super1.setVisible(true);
-        super2.setVisible(true);
+        super1.setVisible(false);
+        super2.setVisible(false);
         personaje1.setVisible(true);
         personaje2.setVisible(true);
         barraj1.setVisible(true);
         barraj2.setVisible(true);
+        barraSuperj1.setVisible(true);
+        barraSuperj2.setVisible(true);
          jugador1 = new Personaje(p1, true, sprite1);
          jugador2 = new Personaje(p2, false, sprite2);
         jugador1.atributos();
@@ -223,11 +234,16 @@ void animarPulsarBoton(MouseEvent event) {
         public void handle(ActionEvent event) {
         attack1.setVisible(true);
         attack2.setVisible(true);
-        super1.setVisible(true);
-        super2.setVisible(true);
+        if(comprobarSuper1()){
+         super1.setVisible(true);
+        }
+        if(comprobarSuper2()){
+         super2.setVisible(true);
+        }
         
         jugador2.setVidaTotal(jugador2.getVidaTotal()-calcularDanio(jugador1, jugador2,false));
         actualizarBarrasDeVida();
+        actualizarBarraSuper(true);
         if(esAtaqueCritico){
             System.out.println("Critico");
         }
@@ -272,10 +288,15 @@ void animarPulsarBoton(MouseEvent event) {
         public void handle(ActionEvent event) {
         attack1.setVisible(true);
         attack2.setVisible(true);
-        super1.setVisible(true);
-        super2.setVisible(true);
+        if(comprobarSuper1()){
+         super1.setVisible(true);
+        }
+        if(comprobarSuper2()){
+         super2.setVisible(true);
+        }
          jugador1.setVidaTotal(jugador1.getVidaTotal()-calcularDanio(jugador2, jugador1,false));
         actualizarBarrasDeVida();
+        actualizarBarraSuper(false);
         if(esAtaqueCritico){
             System.out.println("Critico");
         }
@@ -304,6 +325,7 @@ void animarPulsarBoton(MouseEvent event) {
         attack2.setVisible(false);
         super1.setVisible(false);
         super2.setVisible(false);
+        barraSuperj1.setProgress(0);
         dash.setImage(dashgif);
         personaje1.setImage(image);
         personaje1.setFitWidth(656);
@@ -321,8 +343,13 @@ void animarPulsarBoton(MouseEvent event) {
         public void handle(ActionEvent event) {
         attack1.setVisible(true);
         attack2.setVisible(true);
-        super1.setVisible(true);
-        super2.setVisible(true);
+        if(comprobarSuper1()){
+         super1.setVisible(true);
+        }
+        if(comprobarSuper2()){
+         super2.setVisible(true);
+        }
+      
         jugador2.setVidaTotal(jugador2.getVidaTotal()-calcularDanio(jugador1, jugador2,true));
         actualizarBarrasDeVida();
         if(esAtaqueCritico){
@@ -351,6 +378,7 @@ void animarPulsarBoton(MouseEvent event) {
         attack2.setVisible(false);
         super1.setVisible(false);
         super2.setVisible(false);
+        barraSuperj2.setProgress(0);
         dash.setImage(dashgif);
         personaje2.setImage(image);
         personaje2.setFitWidth(656);
@@ -367,8 +395,12 @@ void animarPulsarBoton(MouseEvent event) {
         public void handle(ActionEvent event) {
         attack1.setVisible(true);
         attack2.setVisible(true);
-        super1.setVisible(true);
-        super2.setVisible(true);
+        if(comprobarSuper1()){
+         super1.setVisible(true);
+        }
+        if(comprobarSuper2()){
+         super2.setVisible(true);
+        }
          jugador1.setVidaTotal(jugador1.getVidaTotal()-calcularDanio(jugador2, jugador1,true));
         actualizarBarrasDeVida();
         if(esAtaqueCritico){
@@ -399,7 +431,7 @@ private double calcularDanio(Personaje atacante, Personaje atacado, boolean isSu
     esAtaqueCritico = Math.random() < probabilidadCritico;
     System.out.println(Math.random());
     System.out.println(probabilidadCritico);
-
+    
     if (esAtaqueCritico) {
         // Es un ataque crítico, aumenta el daño
         double danio = relacionAtaqueVida * (isSuper ? 0.3 : 0.1); // Doble daño para super ataques
@@ -414,11 +446,16 @@ private double calcularDanio(Personaje atacante, Personaje atacado, boolean isSu
         pauseTransition.setOnFinished(event -> {
             FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.2), critical);
             fadeOut.setToValue(0.0);
+
+            // Agrega un evento adicional al fadeOut para establecer la visibilidad después del fade-out
+            fadeOut.setOnFinished(fadeOutEvent -> {
+                critical.setVisible(false);
+            });
+
             fadeOut.play();
-            
         });
         pauseTransition.play();
-        
+
         return danio;
         
     } else {
@@ -429,22 +466,89 @@ private double calcularDanio(Personaje atacante, Personaje atacado, boolean isSu
     }
 }
 
+    public void actualizarBarraSuper(boolean turnoj1){
+        if(turnoj1){
+        if(!comprobarSuper1()){
+    barraSuperj1.setProgress(barraSuperj1.getProgress()+0.33);
+            if(comprobarSuper1()){
+            super1.setVisible(true);
+            }
+        }else{
+         if(!comprobarSuper2()){
+    barraSuperj1.setProgress(barraSuperj2.getProgress()+0.33);
+      if(comprobarSuper2()){
+            super2.setVisible(true);
+            }
+        }
 
+}
+    }
+    }
+    public boolean comprobarSuper1(){
+         if(barraSuperj1.getProgress()!=0.99){
+        return false;
+         }else{
+           
+             return true;
+         }
+    }
     
+        public boolean comprobarSuper2(){
+         if(barraSuperj2.getProgress()!=0.99){
+        return false;
+         }else{
+             return true;
+         }
+    }
+        
     public void actualizarBarrasDeVida() {
 
     barraj1.setProgress(jugador1.getVidaTotal()); 
     barraj2.setProgress(jugador2.getVidaTotal());
 
     if (jugador1.getVidaTotal() <= 0) {
-        jugador1.setVidaTotal(0.01);
-        actualizarBarrasDeVida();
+        barraj1.setProgress(0);
+        Image image = new Image("/resources/img/Personajes/"+p2+"/Victoria/"+"VictoriaD.gif");
+        personaje2.setImage(image);
+        Image image2 = new Image("/resources/img/Personajes/"+p1+"/Derrota/"+"Derrota.gif");
+        personaje1.setImage(image2);
+        barraj1.setVisible(false);
+        barraj2.setVisible(false);
+        attack1.setVisible(false);
+        attack2.setVisible(false);
+        super1.setVisible(false);
+        super2.setVisible(false);
+        logoj1.setVisible(false);
+        logoj2.setVisible(false);
+        barraSuperj1.setVisible(false);
+        barraSuperj2.setVisible(false);
+        Image image3 = new Image("/resources/img/Interfaces/Juego/cartel2.gif");
+        cartel.setImage(image3);
+        cartel.setVisible(true);
     } else {
          barraj1.setStyle(""); 
     }
     if (jugador2.getVidaTotal() <= 0) {
-        jugador2.setVidaTotal(0.01);
-         actualizarBarrasDeVida();
+        barraj2.setProgress(0);
+         Image image = new Image("/resources/img/Personajes/"+p1+"/Victoria/"+"Victoria.gif");
+         Image image2 = new Image("/resources/img/Personajes/"+p2+"/Derrota/"+"DerrotaD.gif");
+        personaje2.setImage(image2);
+        personaje1.setImage(image);
+        barraj1.setVisible(false);
+        barraj2.setVisible(false);
+        attack1.setVisible(false);
+        attack2.setVisible(false);
+        super1.setVisible(false);
+        super2.setVisible(false);
+        logoj1.setVisible(false);
+        logoj2.setVisible(false);
+        barraSuperj1.setVisible(false);
+        barraSuperj2.setVisible(false);
+        Image image4 = new Image("/resources/img/Interfaces/Juego/cartel.gif");
+        cartel.setImage(image4);
+        cartel.setVisible(true);
+
+
     } else {
         barraj2.setStyle(""); 
     }

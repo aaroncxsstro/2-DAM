@@ -28,8 +28,10 @@
          </image></ImageView>
       <ImageView fx:id="personaje2" fitHeight="407.0" fitWidth="656.0" layoutX="500.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true" visible="false" />
       <ProgressBar fx:id="barraj1" layoutX="180.0" layoutY="20.0" prefWidth="200.0" progress="0.0" scaleX="1.8" visible="false" />
+      <ProgressBar fx:id="barraSuperj1" layoutX="100.0" layoutY="50.0" prefWidth="200.0" progress="0.0" visible="false" />
       <ImageView fx:id="logoj1" fitHeight="59.0" fitWidth="61.0" layoutX="28.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
       <ProgressBar fx:id="barraj2" layoutX="635.0" layoutY="20.0" prefWidth="200.0" progress="0.0" scaleX="1.8" visible="false" />
+      <ProgressBar fx:id="barraSuperj2" layoutX="715.0" layoutY="50.0" prefWidth="200.0" progress="0.0" visible="false" />
       <ImageView fx:id="logoj2" fitHeight="59.0" fitWidth="61.0" layoutX="943.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="attack1" fitHeight="67.0" fitWidth="150.0" layoutX="57.0" layoutY="79.0" onMouseClicked="#animarPulsarBoton" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
@@ -56,9 +58,14 @@
             <Image url="@../../../resources/img/Interfaces/Juego/botonStart.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="critical" fitHeight="445.0" fitWidth="505.0" layoutX="304.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" visible="false" opacity="0.0">
+      <ImageView fx:id="critical" fitHeight="445.0" fitWidth="505.0" layoutX="304.0" layoutY="20.0" opacity="0.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../../../resources/img/Interfaces/Juego/critical.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="cartel" fitHeight="759.0" fitWidth="1568.0" layoutX="-315.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../../resources/img/Interfaces/Juego/cartel.gif" />
          </image>
       </ImageView>
    </children>

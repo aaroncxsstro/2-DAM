@@ -95,12 +95,18 @@ public class MenuInicio {
             controlador.setStage(stage);
             pane.getChildren().setAll(root);
 
-            // Configura una transición de fundido para la nueva pantalla
             FadeTransition fadeIn = new FadeTransition(Duration.seconds(1), pane);
             fadeIn.setFromValue(0.0);
             fadeIn.setToValue(1.0);
-            fadeIn.play();
 
+            fadeIn.setOnFinished(e -> {
+                pane.getChildren().setAll(root);
+            });
+
+            fadeIn.play();
+            
+        pane.getChildren().setAll(root);
+        
         } catch (IOException e) {
             e.printStackTrace();
         }

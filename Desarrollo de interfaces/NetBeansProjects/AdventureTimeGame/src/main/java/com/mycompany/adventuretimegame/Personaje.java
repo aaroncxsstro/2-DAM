@@ -175,7 +175,7 @@ public class Personaje {
             this.setAtaque(3);
              this.setSuerte(3);
             this.setTiempoAtaque(1.1);
-            this.setTiempoSuper(1.5);
+            this.setTiempoSuper(1.8);
             this.setTiempoDashAtaque(1.7);
             this.setTiempoDashSuper(1.5);
             break;   
