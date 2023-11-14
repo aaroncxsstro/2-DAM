@@ -31,7 +31,12 @@ public class PantallaMapa {
     private String P1;
     private String P2;
     private String Escenario;
+    private boolean unjugador;
 
+    public void setUnjugador(boolean unjugador) {
+        this.unjugador = unjugador;
+    }
+    
     public String getP1() {
         return P1;
     }
@@ -148,7 +153,7 @@ void cambiarAVistaJuego(ImageView idDelBoton) {
         controlador.setEscenario(Escenario);
         controlador.setP1(P1);
         controlador.setP2(P2);
-
+        controlador.setunjugador(unjugador);
             FadeTransition fadeIn = new FadeTransition(Duration.seconds(1), pane3);
             fadeIn.setFromValue(0.0);
             fadeIn.setToValue(1.0);

@@ -16,6 +16,8 @@ import javafx.util.Duration;
 public class MenuInicio {
     private Stage stage;
 
+    private boolean unJugador;
+    
     public void setStage(Stage stage) {
         this.stage = stage;
     }
@@ -32,6 +34,8 @@ public class MenuInicio {
     @FXML
     private ImageView btncls;
 
+     
+    
     @FXML
     void animarAmpliacionBoton(MouseEvent event) {
         ImageView boton = (ImageView) event.getSource();
@@ -77,6 +81,9 @@ public class MenuInicio {
         fadeOut.setToValue(0.0);
 
         fadeOut.setOnFinished(eventFinished -> {
+            if(idDelBoton.equals("btn1j")){
+                unJugador=true;
+            }
             cambiarAVistaMenuSeleccion();
         });
 
@@ -95,6 +102,7 @@ public class MenuInicio {
             controlador.setStage(stage);
             pane.getChildren().setAll(root);
 
+            controlador.setunjugador(unJugador);
             FadeTransition fadeIn = new FadeTransition(Duration.seconds(1), pane);
             fadeIn.setFromValue(0.0);
             fadeIn.setToValue(1.0);
@@ -111,4 +119,9 @@ public class MenuInicio {
             e.printStackTrace();
         }
     }
+    
+    @FXML
+void cerrarPrograma(MouseEvent event) {
+    System.exit(0);
+}
 }

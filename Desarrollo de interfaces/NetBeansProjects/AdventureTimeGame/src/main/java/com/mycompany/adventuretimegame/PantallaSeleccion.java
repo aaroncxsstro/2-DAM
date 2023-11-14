@@ -25,7 +25,13 @@ public class PantallaSeleccion {
     
     private String nombreJugador1;
     private String nombreJugador2;
+    private boolean unjugador;
 
+
+    public void setunjugador(boolean unjugador) {
+        this.unjugador = unjugador;
+    }
+    
         @FXML
     private AnchorPane pane2;
         
@@ -193,7 +199,11 @@ void animarPulsarBoton(MouseEvent event) {
    PauseTransition pause = new PauseTransition(Duration.seconds(2));
 
     expandirAnimacion.setOnFinished(eventFinished -> {
+        if(idDelBoton.equals("botonPlay"))
         cambiarAVistaMenuSeleccion(espacioMuñecoDer.getId());
+        else if(idDelBoton.equals("botonExit")){
+            cambiarAVistaMenuInicio();
+        }
     });
 
     expandirAnimacion.play();
@@ -209,6 +219,7 @@ void cambiarAVistaMenuSeleccion(String id) {
         PantallaMapa controlador = loader.getController();
         controlador.setP1(nombreJugador1);
         controlador.setP2(nombreJugador2);
+        controlador.setUnjugador(unjugador);
 
         // Configurar una transición de fundido
         FadeTransition fadeOut = new FadeTransition(Duration.seconds(1), pane2);
@@ -233,4 +244,34 @@ void cambiarAVistaMenuSeleccion(String id) {
     }
 }
     
+@FXML
+void cambiarAVistaMenuInicio() {
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("menuinicio.fxml"));
+        Parent root = loader.load();
+        
+        MenuInicio controlador = loader.getController();
+
+        // Configurar una transición de fundido
+        FadeTransition fadeOut = new FadeTransition(Duration.seconds(1), pane2);
+        fadeOut.setFromValue(1.0);
+        fadeOut.setToValue(0.0);
+
+        fadeOut.setOnFinished(e -> {
+            // Cambiar la escena después de que se complete la transición de fundido
+            pane2.getChildren().setAll(root);
+
+            // Configurar una transición de fundido para la nueva pantalla
+            FadeTransition fadeIn = new FadeTransition(Duration.seconds(1), pane2);
+            fadeIn.setFromValue(0.0);
+            fadeIn.setToValue(1.0);
+            fadeIn.play();
+        });
+
+        fadeOut.play();
+
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
 }

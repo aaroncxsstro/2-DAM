@@ -1,6 +1,7 @@
 package com.mycompany.adventuretimegame;
 
 import java.io.IOException;
+import java.util.Random;
 import javafx.animation.AnimationTimer;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
@@ -18,6 +19,7 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -44,6 +46,12 @@ public class Juego {
 
     private Image sprite2;
     
+    private boolean unjugador; 
+
+    public void setunjugador(boolean unjugador) {
+        this.unjugador = unjugador;
+    }
+   
     @FXML
     private ProgressBar barraSuperj1;
     
@@ -142,7 +150,9 @@ public class Juego {
     private ImageView critical;
 
     private boolean esAtaqueCritico;
-
+    
+ boolean esTurnoJugador1;
+         
     @FXML
     public void comenzar(){
         
@@ -166,8 +176,11 @@ public class Juego {
         logoj1.setImage(imagen);
         logoj2.setImage(imagen2);
         actualizarBarrasDeVida();
+        esTurnoJugador1 = new Random().nextBoolean();
+        actualizarBotones(esTurnoJugador1);
+}
         
-    }
+    
     
             @FXML
 void animarPulsarBoton(MouseEvent event) {
@@ -232,18 +245,12 @@ void animarPulsarBoton(MouseEvent event) {
     Timeline timelineBotones = new Timeline(new KeyFrame(botonDuration, new EventHandler<ActionEvent>() {
         @Override
         public void handle(ActionEvent event) {
-        attack1.setVisible(true);
-        attack2.setVisible(true);
-        if(comprobarSuper1()){
-         super1.setVisible(true);
-        }
-        if(comprobarSuper2()){
-         super2.setVisible(true);
-        }
-        
         jugador2.setVidaTotal(jugador2.getVidaTotal()-calcularDanio(jugador1, jugador2,false));
+                actualizarBotones(false);
         actualizarBarrasDeVida();
+
         actualizarBarraSuper(true);
+
         if(esAtaqueCritico){
             System.out.println("Critico");
         }
@@ -286,17 +293,13 @@ void animarPulsarBoton(MouseEvent event) {
     Timeline timelineBotones = new Timeline(new KeyFrame(botonDuration, new EventHandler<ActionEvent>() {
         @Override
         public void handle(ActionEvent event) {
-        attack1.setVisible(true);
-        attack2.setVisible(true);
-        if(comprobarSuper1()){
-         super1.setVisible(true);
-        }
-        if(comprobarSuper2()){
-         super2.setVisible(true);
-        }
+
          jugador1.setVidaTotal(jugador1.getVidaTotal()-calcularDanio(jugador2, jugador1,false));
+         actualizarBotones(true);
         actualizarBarrasDeVida();
+
         actualizarBarraSuper(false);
+
         if(esAtaqueCritico){
             System.out.println("Critico");
         }
@@ -341,17 +344,10 @@ void animarPulsarBoton(MouseEvent event) {
         
         @Override
         public void handle(ActionEvent event) {
-        attack1.setVisible(true);
-        attack2.setVisible(true);
-        if(comprobarSuper1()){
-         super1.setVisible(true);
-        }
-        if(comprobarSuper2()){
-         super2.setVisible(true);
-        }
-      
         jugador2.setVidaTotal(jugador2.getVidaTotal()-calcularDanio(jugador1, jugador2,true));
+        actualizarBotones(false);
         actualizarBarrasDeVida();
+
         if(esAtaqueCritico){
             System.out.println("Critico");
         }
@@ -393,16 +389,10 @@ void animarPulsarBoton(MouseEvent event) {
         
         @Override
         public void handle(ActionEvent event) {
-        attack1.setVisible(true);
-        attack2.setVisible(true);
-        if(comprobarSuper1()){
-         super1.setVisible(true);
-        }
-        if(comprobarSuper2()){
-         super2.setVisible(true);
-        }
          jugador1.setVidaTotal(jugador1.getVidaTotal()-calcularDanio(jugador2, jugador1,true));
+        actualizarBotones(true);
         actualizarBarrasDeVida();
+
         if(esAtaqueCritico){
             System.out.println("Critico");
         }
@@ -466,40 +456,30 @@ private double calcularDanio(Personaje atacante, Personaje atacado, boolean isSu
     }
 }
 
-    public void actualizarBarraSuper(boolean turnoj1){
-        if(turnoj1){
-        if(!comprobarSuper1()){
-    barraSuperj1.setProgress(barraSuperj1.getProgress()+0.33);
-            if(comprobarSuper1()){
-            super1.setVisible(true);
-            }
-        }else{
-         if(!comprobarSuper2()){
-    barraSuperj1.setProgress(barraSuperj2.getProgress()+0.33);
-      if(comprobarSuper2()){
-            super2.setVisible(true);
-            }
+public void actualizarBarraSuper(boolean turnoj1) {
+    if (turnoj1) {
+        if (!comprobarSuper1()) {
+            barraSuperj1.setProgress(barraSuperj1.getProgress() + 0.33);
         }
-
+    } else {
+        if (!comprobarSuper2()) {
+            barraSuperj2.setProgress(barraSuperj2.getProgress() + 0.33);
+        }
+    }
 }
-    }
-    }
-    public boolean comprobarSuper1(){
-         if(barraSuperj1.getProgress()!=0.99){
-        return false;
-         }else{
-           
-             return true;
-         }
-    }
+
+
+
+
     
-        public boolean comprobarSuper2(){
-         if(barraSuperj2.getProgress()!=0.99){
-        return false;
-         }else{
-             return true;
-         }
-    }
+public boolean comprobarSuper1() {
+    return barraSuperj1.getProgress() >= 0.9;
+}
+
+public boolean comprobarSuper2() {
+    return barraSuperj2.getProgress() >= 0.9;
+}
+
         
     public void actualizarBarrasDeVida() {
 
@@ -554,5 +534,77 @@ private double calcularDanio(Personaje atacante, Personaje atacado, boolean isSu
     }
 }
     
+    public void actualizarBotones(boolean turnoJugador1) {
+    if (turnoJugador1) {
+        attack1.setVisible(true);
+        attack1.setFocusTraversable(true);
+        attack2.setVisible(false);
+        attack2.setFocusTraversable(false);
+        super1.setVisible(comprobarSuper1());
+        super1.setFocusTraversable(comprobarSuper1());
+        super2.setVisible(false);
+        super2.setFocusTraversable(false);
+    } else {
+        if(unjugador){
+            if(comprobarSuper2()){
+                animarSuperJ2();
+            }else{
+            animarAtaqueJ2();
+            }
+        }else{
+        attack1.setVisible(false);
+          attack1.setFocusTraversable(false);
+        attack2.setVisible(true);
+        attack2.setFocusTraversable(true);
+        super1.setVisible(false);
+        super1.setFocusTraversable(false);
+        super2.setVisible(comprobarSuper2());
+        super2.setFocusTraversable(comprobarSuper1());
+        }
+    }
+}
+    
+    @FXML
+void animarPulsarTecla(KeyEvent event) {
+
+        if (attack1.isVisible()) {
+            manejarEntradasJugador1(event);
+        } else {
+            manejarEntradasJugador2(event);
+        }
+}
+
+private void manejarEntradasJugador1(KeyEvent event) {
+    switch (event.getCode()) {
+        case A:
+            if (attack1.isVisible()) {
+                animarAtaqueJ1();
+            }
+            break;
+        case D:
+            if (super1.isVisible()) {
+                animarSuperJ1();
+            }
+            break;
+        // Agrega más casos según sea necesario para el jugador 1
+    }
+}
+
+private void manejarEntradasJugador2(KeyEvent event) {
+    switch (event.getCode()) {
+        case LEFT:
+            if (attack2.isVisible()) {
+                animarAtaqueJ2();
+            }
+            break;
+        case RIGHT:
+            if (super2.isVisible()) {
+                animarSuperJ2();
+            }
+            break;
+        // Agrega más casos según sea necesario para el jugador 2
+    }
+}
+
 }
 

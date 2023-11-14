@@ -31,7 +31,7 @@
             <Image url="@../../../resources/img/Interfaces/TextoInicio2.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="btncls" fitHeight="150.0" fitWidth="200.0" layoutX="414.0" layoutY="307.0" onMouseClicked="#animarPulsarBoton" onMouseEntered="#animarAmpliacionBoton" onMouseExited="#animarReinicioBoton" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="btncls" fitHeight="150.0" fitWidth="200.0" layoutX="414.0" layoutY="307.0" onMouseClicked="#cerrarPrograma" onMouseEntered="#animarAmpliacionBoton" onMouseExited="#animarReinicioBoton" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../resources/img/Interfaces/TextoInicio3.png" />
          </image>

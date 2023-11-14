@@ -33,22 +33,22 @@
       <ProgressBar fx:id="barraj2" layoutX="635.0" layoutY="20.0" prefWidth="200.0" progress="0.0" scaleX="1.8" visible="false" />
       <ProgressBar fx:id="barraSuperj2" layoutX="715.0" layoutY="50.0" prefWidth="200.0" progress="0.0" visible="false" />
       <ImageView fx:id="logoj2" fitHeight="59.0" fitWidth="61.0" layoutX="943.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="attack1" fitHeight="67.0" fitWidth="150.0" layoutX="57.0" layoutY="79.0" onMouseClicked="#animarPulsarBoton" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="attack1" fitHeight="67.0" fitWidth="150.0" layoutX="57.0" layoutY="79.0" onKeyPressed="#animarPulsarTecla" onMouseClicked="#animarPulsarBoton" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../../../resources/img/Interfaces/Juego/BotonAtack.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="super1" fitHeight="67.0" fitWidth="150.0" layoutX="226.0" layoutY="79.0" onMouseClicked="#animarPulsarBoton" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="super1" fitHeight="67.0" fitWidth="150.0" layoutX="226.0" layoutY="79.0" onKeyPressed="#animarPulsarTecla" onMouseClicked="#animarPulsarBoton" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../../../resources/img/Interfaces/Juego/BotonSuper.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="attack2" fitHeight="67.0" fitWidth="150.0" layoutX="645.0" layoutY="81.0" onMouseClicked="#animarPulsarBoton" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="attack2" fitHeight="67.0" fitWidth="150.0" layoutX="645.0" layoutY="81.0" onKeyPressed="#animarPulsarTecla" onMouseClicked="#animarPulsarBoton" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../../../resources/img/Interfaces/Juego/BotonAtack.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="super2" fitHeight="67.0" fitWidth="150.0" layoutX="814.0" layoutY="81.0" onMouseClicked="#animarPulsarBoton" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="super2" fitHeight="67.0" fitWidth="150.0" layoutX="814.0" layoutY="81.0" onKeyPressed="#animarPulsarTecla" onMouseClicked="#animarPulsarBoton" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../../../resources/img/Interfaces/Juego/BotonSuper.png" />
          </image>
