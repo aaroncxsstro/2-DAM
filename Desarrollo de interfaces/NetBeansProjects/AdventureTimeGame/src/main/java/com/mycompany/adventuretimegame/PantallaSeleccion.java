@@ -80,6 +80,33 @@ public class PantallaSeleccion {
     @FXML
     private ImageView botonExit;
     
+        @FXML
+    private ImageView statsFinn;
+
+    @FXML
+    private ImageView statsJake;
+
+    @FXML
+    private ImageView statsGunter;
+
+    @FXML
+    private ImageView statsLimoncio;
+
+    @FXML
+    private ImageView statsCake;
+
+    @FXML
+    private ImageView statsMenta;
+
+    @FXML
+    private ImageView statsLlama;
+
+    @FXML
+    private ImageView statsMarceline;
+
+    @FXML
+    private ImageView statsreyHielo;
+    
     private ImageView botonSeleccionado = null;
     
     private boolean jugador1= true;
@@ -91,24 +118,19 @@ void cambiarJugador(MouseEvent event) {
     Image botonAzul = new Image("/resources/img/interfaces/PantallaSeleccion/BotonJugador1.png");
     Image botonRojo = new Image("/resources/img/interfaces/PantallaSeleccion/BotonJugador2.png");
 
-    
-    String nombreSin = botonSeleccionado.getId().substring(0, botonSeleccionado.getId().length() - 7) + "Sin.png";
-    Image imagenSin = new Image("/resources/img/interfaces/PantallaSeleccion/Botones/" + nombreSin);
-
-    botonSeleccionado.setImage(imagenSin);
-
     if (jugador1) {
         botonJugador.setImage(botonRojo);
         rejilla.setImage(rejillaRoja);
         jugador1 = false;
-        
-
+        // Aquí también podrías asignar valores predeterminados para jugador2 si es necesario
     } else {
         botonJugador.setImage(botonAzul);
         rejilla.setImage(rejillaAzul);
         jugador1 = true;
     }
 }
+
+
      
     @FXML
     void animarBoton(MouseEvent event) {
@@ -169,6 +191,55 @@ void animarAmpliacionBoton(MouseEvent event) {
 }
     
         @FXML
+void animarEstadisticas(MouseEvent event) {
+    ImageView boton = (ImageView) event.getSource();
+    String N = "stats"+boton.getId().substring(0, boton.getId().length() - 7);
+   
+statsFinn.setVisible("statsfinn".equals(N));
+
+statsJake.setVisible("statsjake".equals(N));
+
+statsGunter.setVisible("statsgunter".equals(N));
+
+statsLimoncio.setVisible("statslimoncio".equals(N));
+
+statsCake.setVisible("statscake".equals(N));
+
+statsMenta.setVisible("statsmenta".equals(N));
+
+statsLlama.setVisible("statsllama".equals(N));
+
+statsMarceline.setVisible("statsmarceline".equals(N));
+
+statsreyHielo.setVisible("statsreyHielo".equals(N));
+    
+}
+
+      @FXML
+void animarEstadisticasSalida(MouseEvent event) {
+    ImageView boton = (ImageView) event.getSource();
+    String N = "stats"+boton.getId().substring(0, boton.getId().length() - 7);
+   
+statsFinn.setVisible(false);
+
+statsJake.setVisible(false);
+
+statsGunter.setVisible(false);
+
+statsLimoncio.setVisible(false);
+
+statsCake.setVisible(false);
+
+statsMenta.setVisible(false);
+
+statsLlama.setVisible(false);
+
+statsMarceline.setVisible(false);
+
+statsreyHielo.setVisible(false);
+    
+}
+        @FXML
     void animarReinicioBoton(MouseEvent event) {
          ImageView boton = (ImageView) event.getSource();
          
@@ -203,6 +274,8 @@ void animarPulsarBoton(MouseEvent event) {
         cambiarAVistaMenuSeleccion(espacioMuñecoDer.getId());
         else if(idDelBoton.equals("botonExit")){
             cambiarAVistaMenuInicio();
+        }else {
+
         }
     });
 

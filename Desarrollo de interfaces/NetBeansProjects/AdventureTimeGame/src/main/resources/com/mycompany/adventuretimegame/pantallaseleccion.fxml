@@ -18,47 +18,47 @@
       </ImageView>
       <ImageView fx:id="espacioMuñecoIzq" fitHeight="500.0" fitWidth="299.0" layoutX="21.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="espacioMuñecoDer" fitHeight="500.0" fitWidth="292.0" layoutX="711.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="finnCasilla" fitHeight="128.0" fitWidth="122.0" layoutX="329.0" layoutY="137.0" onMouseClicked="#animarBoton" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="finnCasilla" fitHeight="128.0" fitWidth="122.0" layoutX="329.0" layoutY="137.0" onMouseClicked="#animarBoton" onMouseEntered="#animarEstadisticas" onMouseExited="#animarEstadisticasSalida" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../resources/img/Interfaces/PantallaSeleccion/Botones/FinnSin.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="jakeCasilla" fitHeight="128.0" fitWidth="122.0" layoutX="454.0" layoutY="136.0" onMouseClicked="#animarBoton" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="jakeCasilla" fitHeight="128.0" fitWidth="122.0" layoutX="454.0" layoutY="136.0" onMouseClicked="#animarBoton" onMouseEntered="#animarEstadisticas" onMouseExited="#animarEstadisticasSalida" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../resources/img/Interfaces/PantallaSeleccion/Botones/JakeSin.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="gunterCasilla" fitHeight="128.0" fitWidth="122.0" layoutX="579.0" layoutY="136.0" onMouseClicked="#animarBoton" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="gunterCasilla" fitHeight="128.0" fitWidth="122.0" layoutX="579.0" layoutY="136.0" onMouseClicked="#animarBoton" onMouseEntered="#animarEstadisticas" onMouseExited="#animarEstadisticasSalida" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../resources/img/Interfaces/PantallaSeleccion/Botones/GunterSin.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="llamaCasilla" fitHeight="128.0" fitWidth="122.0" layoutX="329.0" layoutY="266.0" onMouseClicked="#animarBoton" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="llamaCasilla" fitHeight="128.0" fitWidth="122.0" layoutX="329.0" layoutY="266.0" onMouseClicked="#animarBoton" onMouseEntered="#animarEstadisticas" onMouseExited="#animarEstadisticasSalida" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../resources/img/Interfaces/PantallaSeleccion/Botones/LlamaSin.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="marcelineCasilla" fitHeight="128.0" fitWidth="122.0" layoutX="454.0" layoutY="266.0" onMouseClicked="#animarBoton" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="marcelineCasilla" fitHeight="128.0" fitWidth="122.0" layoutX="454.0" layoutY="266.0" onMouseClicked="#animarBoton" onMouseEntered="#animarEstadisticas" onMouseExited="#animarEstadisticasSalida" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../resources/img/Interfaces/PantallaSeleccion/Botones/MarcelineSin.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="reyHieloCasilla" fitHeight="128.0" fitWidth="122.0" layoutX="579.0" layoutY="267.0" onMouseClicked="#animarBoton" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="reyHieloCasilla" fitHeight="128.0" fitWidth="122.0" layoutX="579.0" layoutY="267.0" onMouseClicked="#animarBoton" onMouseEntered="#animarEstadisticas" onMouseExited="#animarEstadisticasSalida" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../resources/img/Interfaces/PantallaSeleccion/Botones/ReyHieloSin.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="limoncioCasilla" fitHeight="128.0" fitWidth="122.0" layoutX="329.0" layoutY="395.0" onMouseClicked="#animarBoton" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="limoncioCasilla" fitHeight="128.0" fitWidth="122.0" layoutX="329.0" layoutY="395.0" onMouseClicked="#animarBoton" onMouseEntered="#animarEstadisticas" onMouseExited="#animarEstadisticasSalida" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../resources/img/Interfaces/PantallaSeleccion/Botones/LimoncioSin.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="cakeCasilla" fitHeight="128.0" fitWidth="122.0" layoutX="454.0" layoutY="396.0" onMouseClicked="#animarBoton" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="cakeCasilla" fitHeight="128.0" fitWidth="122.0" layoutX="454.0" layoutY="396.0" onMouseClicked="#animarBoton" onMouseEntered="#animarEstadisticas" onMouseExited="#animarEstadisticasSalida" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../resources/img/Interfaces/PantallaSeleccion/Botones/CakeSin.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="mentaCasilla" fitHeight="128.0" fitWidth="122.0" layoutX="580.0" layoutY="396.0" onMouseClicked="#animarBoton" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="mentaCasilla" fitHeight="128.0" fitWidth="122.0" layoutX="580.0" layoutY="396.0" onMouseClicked="#animarBoton" onMouseEntered="#animarEstadisticas" onMouseExited="#animarEstadisticasSalida" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../resources/img/Interfaces/PantallaSeleccion/Botones/MentaSin.png" />
          </image>
@@ -72,6 +72,51 @@
       <ImageView fx:id="botonExit" fitHeight="43.0" fitWidth="186.0" layoutX="772.0" layoutY="47.0" onMouseClicked="#animarPulsarBoton" onMouseEntered="#animarAmpliacionBoton" onMouseExited="#animarReinicioBoton" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../resources/img/Interfaces/PantallaSeleccion/EXIT.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="statsFinn" fitHeight="150.0" fitWidth="200.0" layoutX="298.0" layoutY="200.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../../resources/img/Interfaces/PantallaSeleccion/Botones/statsFinn.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="statsJake" fitHeight="150.0" fitWidth="200.0" layoutX="424.0" layoutY="200.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../../resources/img/Interfaces/PantallaSeleccion/Botones/statsFinn.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="statsGunter" fitHeight="150.0" fitWidth="200.0" layoutX="546.0" layoutY="200.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../../resources/img/Interfaces/PantallaSeleccion/Botones/statsFinn.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="statsLimoncio" fitHeight="150.0" fitWidth="200.0" layoutX="299.0" layoutY="350.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../../resources/img/Interfaces/PantallaSeleccion/Botones/statsLimoncio.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="statsCake" fitHeight="150.0" fitWidth="200.0" layoutX="425.0" layoutY="350.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../../resources/img/Interfaces/PantallaSeleccion/Botones/statsCake.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="statsMenta" fitHeight="150.0" fitWidth="200.0" layoutX="547.0" layoutY="350.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../../resources/img/Interfaces/PantallaSeleccion/Botones/statsMenta.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="statsLlama" fitHeight="150.0" fitWidth="200.0" layoutX="298.0" layoutY="309.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../../resources/img/Interfaces/PantallaSeleccion/Botones/statsLlama.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="statsMarceline" fitHeight="150.0" fitWidth="200.0" layoutX="424.0" layoutY="309.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../../resources/img/Interfaces/PantallaSeleccion/Botones/statsMarceline.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="statsreyHielo" fitHeight="150.0" fitWidth="200.0" layoutX="546.0" layoutY="309.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../../resources/img/Interfaces/PantallaSeleccion/Botones/statsreyHielo.png" />
          </image>
       </ImageView>
    </children>

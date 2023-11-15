@@ -1,22 +1,15 @@
 package com.mycompany.adventuretimegame;
 
-import java.io.IOException;
 import java.util.Random;
-import javafx.animation.AnimationTimer;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.PauseTransition;
 import javafx.animation.ScaleTransition;
 import javafx.animation.Timeline;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -419,14 +412,19 @@ private double calcularDanio(Personaje atacante, Personaje atacado, boolean isSu
 
     double probabilidadCritico = isSuper ? 0.25 * suerte : 0.5 * suerte;
     esAtaqueCritico = Math.random() < probabilidadCritico;
-    System.out.println(Math.random());
-    System.out.println(probabilidadCritico);
-    
-    if (esAtaqueCritico) {
-        // Es un ataque crítico, aumenta el daño
-        double danio = relacionAtaqueVida * (isSuper ? 0.3 : 0.1); // Doble daño para super ataques
-        atacado.setVidaTotal(atacado.getVidaTotal() - danio);
 
+    if (esAtaqueCritico) {
+        double danio = relacionAtaqueVida * (isSuper ? 0.3 : 0.1); // Doble daño para super ataques
+        double vidaRestante = atacado.getVidaTotal() - danio;
+
+        // Verifica si la vida resultante es menor o igual a cero
+        if (vidaRestante <= 0) {
+            atacado.setVidaTotal(0);
+        } else {
+            atacado.setVidaTotal(vidaRestante);
+        }
+
+        // Resto del código para el ataque crítico
         critical.setVisible(true);
         FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.2), critical);
         fadeIn.setToValue(1.0);
@@ -447,14 +445,22 @@ private double calcularDanio(Personaje atacante, Personaje atacado, boolean isSu
         pauseTransition.play();
 
         return danio;
-        
+
     } else {
-        // Ataque normal
         double danio = relacionAtaqueVida * (isSuper ? 0.15 : 0.05); // Ajusta el factor de daño para super ataques
-        atacado.setVidaTotal(atacado.getVidaTotal() - danio);
+        double vidaRestante = atacado.getVidaTotal() - danio;
+
+        // Verifica si la vida resultante es menor o igual a cero
+        if (vidaRestante <= 0) {
+            atacado.setVidaTotal(0);
+        } else {
+            atacado.setVidaTotal(vidaRestante);
+        }
+
         return danio;
     }
 }
+
 
 public void actualizarBarraSuper(boolean turnoj1) {
     if (turnoj1) {

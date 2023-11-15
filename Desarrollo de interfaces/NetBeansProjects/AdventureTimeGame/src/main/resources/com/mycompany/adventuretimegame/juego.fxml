@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.adventuretimegame.Juego">
    <children>
@@ -33,24 +35,24 @@
       <ProgressBar fx:id="barraj2" layoutX="635.0" layoutY="20.0" prefWidth="200.0" progress="0.0" scaleX="1.8" visible="false" />
       <ProgressBar fx:id="barraSuperj2" layoutX="715.0" layoutY="50.0" prefWidth="200.0" progress="0.0" visible="false" />
       <ImageView fx:id="logoj2" fitHeight="59.0" fitWidth="61.0" layoutX="943.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="attack1" fitHeight="67.0" fitWidth="150.0" layoutX="57.0" layoutY="79.0" onKeyPressed="#animarPulsarTecla" onMouseClicked="#animarPulsarBoton" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="attack1" fitHeight="81.0" fitWidth="160.0" layoutX="57.0" layoutY="79.0" onKeyPressed="#animarPulsarTecla" onMouseClicked="#animarPulsarBoton" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
-            <Image url="@../../../resources/img/Interfaces/Juego/BotonAtack.png" />
+            <Image url="@../../../resources/img/Interfaces/Juego/BotonAtackJ1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="super1" fitHeight="67.0" fitWidth="150.0" layoutX="226.0" layoutY="79.0" onKeyPressed="#animarPulsarTecla" onMouseClicked="#animarPulsarBoton" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="super1" fitHeight="81.0" fitWidth="160.0" layoutX="226.0" layoutY="79.0" onKeyPressed="#animarPulsarTecla" onMouseClicked="#animarPulsarBoton" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
-            <Image url="@../../../resources/img/Interfaces/Juego/BotonSuper.png" />
+            <Image url="@../../../resources/img/Interfaces/Juego/BotonSuperJ1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="attack2" fitHeight="67.0" fitWidth="150.0" layoutX="645.0" layoutY="81.0" onKeyPressed="#animarPulsarTecla" onMouseClicked="#animarPulsarBoton" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="attack2" fitHeight="81.0" fitWidth="160.0" layoutX="645.0" layoutY="81.0" onKeyPressed="#animarPulsarTecla" onMouseClicked="#animarPulsarBoton" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
-            <Image url="@../../../resources/img/Interfaces/Juego/BotonAtack.png" />
+            <Image url="@../../../resources/img/Interfaces/Juego/BotonAtackJ2.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="super2" fitHeight="67.0" fitWidth="150.0" layoutX="814.0" layoutY="81.0" onKeyPressed="#animarPulsarTecla" onMouseClicked="#animarPulsarBoton" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="super2" fitHeight="81.0" fitWidth="160.0" layoutX="814.0" layoutY="81.0" onKeyPressed="#animarPulsarTecla" onMouseClicked="#animarPulsarBoton" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
-            <Image url="@../../../resources/img/Interfaces/Juego/BotonSuper.png" />
+            <Image url="@../../../resources/img/Interfaces/Juego/BotonSuperJ2.png" />
          </image>
       </ImageView>
       <ImageView fx:id="botonStart" fitHeight="577.0" fitWidth="1217.0" onMouseClicked="#comenzar" pickOnBounds="true" preserveRatio="true">
@@ -58,7 +60,7 @@
             <Image url="@../../../resources/img/Interfaces/Juego/botonStart.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="critical" fitHeight="445.0" fitWidth="505.0" layoutX="304.0" layoutY="20.0" opacity="0.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="critical" fitHeight="445.0" fitWidth="505.0" layoutX="304.0" layoutY="20.0" mouseTransparent="true" opacity="0.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../../../resources/img/Interfaces/Juego/critical.png" />
          </image>
@@ -68,5 +70,10 @@
             <Image url="@../../../resources/img/Interfaces/Juego/cartel.gif" />
          </image>
       </ImageView>
+      <Label fx:id="teclaQTE" layoutX="76.0" layoutY="150.0" prefHeight="88.0" prefWidth="746.0" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="60.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
