@@ -33,9 +33,9 @@ public class App extends Application {
 
         primaryStage.setTitle("Adventure Time Fight");
         primaryStage.getIcons().add(new Image("/resources/img/interfaces/Logo.png"));        
-        primaryStage.setWidth(1024); // Establece el ancho deseado
-        primaryStage.setHeight(576); // Establece el alto deseado
-        primaryStage.centerOnScreen(); // Centra la ventana en la pantalla
+        primaryStage.setWidth(1024); 
+        primaryStage.setHeight(576); 
+        primaryStage.centerOnScreen();
 
         primaryStage.show();
     }

@@ -87,7 +87,6 @@ public class MenuInicio {
             cambiarAVistaMenuSeleccion();
         });
 
-        // Reproduce la animación de escala y luego la pausa
         expandirAnimacion.play();
         fadeOut.play();
     }

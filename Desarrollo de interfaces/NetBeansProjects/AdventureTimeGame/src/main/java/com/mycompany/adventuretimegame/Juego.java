@@ -1,6 +1,7 @@
 package com.mycompany.adventuretimegame;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Random;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
@@ -24,11 +25,16 @@ import javafx.util.Duration;
 public class Juego {
 
             private Stage stage;
+    private List<PantallaTabla.JuegoResult> resultadosAnteriores;
 
     public void setStage(Stage stage) {
         this.stage = stage;
     }
     
+        public void setResultadosAnteriores(List<PantallaTabla.JuegoResult> resultadosAnteriores) {
+        this.resultadosAnteriores = resultadosAnteriores;
+    }
+        
         @FXML
     private AnchorPane pane4;
         
@@ -234,7 +240,6 @@ void animarPulsarBoton(MouseEvent event) {
 
     });
 
-    // Reproduce la animación de escala y luego la pausa
     expandirAnimacion.play();
 }
     
@@ -278,7 +283,6 @@ void animarPulsarBoton(MouseEvent event) {
         }
     }));
         
-    // Iniciar el Timeline
     timeline.play();
     timelineBotones.play();
 }
@@ -375,7 +379,6 @@ void animarPulsarBoton(MouseEvent event) {
         }
     }));
 
-    // Iniciar el Timeline
     timeline.play();
     timelineBotones.play();
 }
@@ -421,7 +424,6 @@ void animarPulsarBoton(MouseEvent event) {
         }
     }));
 
-    // Iniciar el Timeline
     timeline.play();
     timelineBotones.play();
 }
@@ -435,17 +437,16 @@ private double calcularDanio(Personaje atacante, Personaje atacado, boolean isSu
     esAtaqueCritico = Math.random() < probabilidadCritico;
 
     if (esAtaqueCritico) {
-        double danio = relacionAtaqueVida * (isSuper ? 0.3 : 0.1); // Doble daño para super ataques
+        double danio = relacionAtaqueVida * (isSuper ? 0.3 : 0.1); 
         double vidaRestante = atacado.getVidaTotal() - danio;
 
-        // Verifica si la vida resultante es menor o igual a cero
+
         if (vidaRestante <= 0) {
             atacado.setVidaTotal(0);
         } else {
             atacado.setVidaTotal(vidaRestante);
         }
 
-        // Resto del código para el ataque crítico
         Image image = new Image("/resources/img/Interfaces/Juego/critical.gif");
         critical.setImage(image);
         critical.setVisible(true);
@@ -470,10 +471,10 @@ private double calcularDanio(Personaje atacante, Personaje atacado, boolean isSu
         return danio;
 
     } else {
-        double danio = relacionAtaqueVida * (isSuper ? 0.15 : 0.05); // Ajusta el factor de daño para super ataques
+        double danio = relacionAtaqueVida * (isSuper ? 0.15 : 0.05); 
         double vidaRestante = atacado.getVidaTotal() - danio;
 
-        // Verifica si la vida resultante es menor o igual a cero
+
         if (vidaRestante <= 0) {
             atacado.setVidaTotal(0);
         } else {
@@ -619,7 +620,6 @@ private void manejarEntradasJugador1(KeyEvent event) {
                 animarSuperJ1();
             }
             break;
-        // Agrega más casos según sea necesario para el jugador 1
     }
 }
 
@@ -635,7 +635,6 @@ private void manejarEntradasJugador2(KeyEvent event) {
                 animarSuperJ2();
             }
             break;
-        // Agrega más casos según sea necesario para el jugador 2
     }
 }
 
@@ -665,18 +664,16 @@ private void continuar(MouseEvent event){
         PantallaTabla controlador = loader.getController();
         
         controlador.setGanadorYMapa(jugador1.getVidaTotal() <= 0 ? jugador2 : jugador1, Escenario);
+        controlador.setunjugador(unjugador);
+        // controlador.setResultadosAnteriores(resultadosAnteriores);
 
-
-        // Configurar una transición de fundido
         FadeTransition fadeOut = new FadeTransition(Duration.seconds(1), pane4);
         fadeOut.setFromValue(1.0);
         fadeOut.setToValue(0.0);
 
         fadeOut.setOnFinished(e -> {
-            // Cambiar la escena después de que se complete la transición de fundido
             pane4.getChildren().setAll(root);
 
-            // Configurar una transición de fundido para la nueva pantalla
             FadeTransition fadeIn = new FadeTransition(Duration.seconds(1), pane4);
             fadeIn.setFromValue(0.0);
             fadeIn.setToValue(1.0);

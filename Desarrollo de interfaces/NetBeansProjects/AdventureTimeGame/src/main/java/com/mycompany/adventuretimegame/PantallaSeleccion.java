@@ -1,6 +1,7 @@
 package com.mycompany.adventuretimegame;
 
 import java.io.IOException;
+import java.util.List;
 import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
 import javafx.animation.ScaleTransition;
@@ -19,10 +20,12 @@ public class PantallaSeleccion {
 
         private Stage stage;
 
+
     public void setStage(Stage stage) {
         this.stage = stage;
     }
     
+        
     private String nombreJugador1;
     private String nombreJugador2;
     private boolean unjugador;
@@ -293,7 +296,6 @@ void cambiarAVistaMenuSeleccion(String id) {
         controlador.setP1(nombreJugador1);
         controlador.setP2(nombreJugador2);
         controlador.setUnjugador(unjugador);
-
         // Configurar una transición de fundido
         FadeTransition fadeOut = new FadeTransition(Duration.seconds(1), pane2);
         fadeOut.setFromValue(1.0);
@@ -324,7 +326,7 @@ void cambiarAVistaMenuInicio() {
         Parent root = loader.load();
         
         MenuInicio controlador = loader.getController();
-
+ //controlador.setResultadosAnteriores(resultadosAnteriores);
         // Configurar una transición de fundido
         FadeTransition fadeOut = new FadeTransition(Duration.seconds(1), pane2);
         fadeOut.setFromValue(1.0);
@@ -347,4 +349,6 @@ void cambiarAVistaMenuInicio() {
         e.printStackTrace();
     }
 }
+
+
 }

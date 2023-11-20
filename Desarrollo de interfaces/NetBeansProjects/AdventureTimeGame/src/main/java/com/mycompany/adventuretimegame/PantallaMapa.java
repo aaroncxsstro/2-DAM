@@ -6,6 +6,7 @@
 package com.mycompany.adventuretimegame;
 
 import java.io.IOException;
+import java.util.List;
 import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
 import javafx.animation.ScaleTransition;
@@ -23,11 +24,15 @@ import javafx.util.Duration;
 
 public class PantallaMapa {
             private Stage stage;
+    private List<PantallaTabla.JuegoResult> resultadosAnteriores;
 
     public void setStage(Stage stage) {
         this.stage = stage;
     }
     
+        public void setResultadosAnteriores(List<PantallaTabla.JuegoResult> resultadosAnteriores) {
+        this.resultadosAnteriores = resultadosAnteriores;
+    }
     private String P1;
     private String P2;
     private String Escenario;
@@ -154,6 +159,7 @@ void cambiarAVistaJuego(ImageView idDelBoton) {
         controlador.setP1(P1);
         controlador.setP2(P2);
         controlador.setunjugador(unjugador);
+         //controlador.setResultadosAnteriores(resultadosAnteriores);
             FadeTransition fadeIn = new FadeTransition(Duration.seconds(1), pane3);
             fadeIn.setFromValue(0.0);
             fadeIn.setToValue(1.0);
