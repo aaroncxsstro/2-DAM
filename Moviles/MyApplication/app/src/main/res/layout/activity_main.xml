@@ -17,7 +17,37 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:src="@drawable/imagen"
-    android:scaleType="centerInside"/>
+        android:src="@drawable/imagen1"
+        android:scaleType="centerInside"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/botonIzquierdo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cambiar a imagen1"
+            android:onClick="cambiarImagen1"
+            android:onHover="aumentarTamaño"
+            android:onPress="animacionApretar"
+            android:soundOnClick="@raw/audio1"/>
+        <Space
+            android:layout_width="16dp"
+            android:layout_height="1dp"/>
+        <Button
+            android:id="@+id/botonDerecho"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cambiar a imagen2"
+            android:onClick="cambiarImagen2"
+            android:onHover="aumentarTamaño"
+            android:onPress="animacionApretar"
+            android:soundOnClick="@raw/audio2"/>
+
+    </LinearLayout>
 
 </LinearLayout>

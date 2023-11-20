@@ -11,6 +11,22 @@ public class Personaje {
     private String nombre;
 
     private boolean j1;
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public boolean isJ1() {
+        return j1;
+    }
+
+    public void setJ1(boolean j1) {
+        this.j1 = j1;
+    }
     
     private Image sprite;
 
@@ -147,9 +163,9 @@ public class Personaje {
             this.setAtaque(4);
              this.setSuerte(1);
             this.setTiempoAtaque(0.8);
-            this.setTiempoSuper(5);
+            this.setTiempoSuper(2.1);
             this.setTiempoDashAtaque(1.9);
-            this.setTiempoDashSuper(3.0);
+            this.setTiempoDashSuper(2.8);
             break;         
         case "reyHielo":
             this.setVida(2);

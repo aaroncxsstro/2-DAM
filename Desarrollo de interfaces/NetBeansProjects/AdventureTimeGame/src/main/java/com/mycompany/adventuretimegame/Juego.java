@@ -1,5 +1,6 @@
 package com.mycompany.adventuretimegame;
 
+import java.io.IOException;
 import java.util.Random;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
@@ -9,11 +10,14 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -25,6 +29,9 @@ public class Juego {
         this.stage = stage;
     }
     
+        @FXML
+    private AnchorPane pane4;
+        
     private Personaje jugador1;
     
     private Personaje jugador2;
@@ -130,6 +137,10 @@ public class Juego {
     @FXML
     private ProgressBar barraj1;
     
+    
+    @FXML
+    private ImageView continuar;
+    
       @FXML
     private ProgressBar barraj2;
     
@@ -150,8 +161,18 @@ public class Juego {
     public void comenzar(){
         
         botonStart.setVisible(false);
+        Image image = new Image ("/resources/img/Interfaces/Juego/BotonAtackJ1"+Escenario+".png");
+        attack1.setImage(image);
         attack1.setVisible(true);
+        Image image2 = new Image ("/resources/img/Interfaces/Juego/BotonAtackJ2"+Escenario+".png");
+        attack2.setImage(image2);
         attack2.setVisible(true);
+        Image image3 = new Image ("/resources/img/Interfaces/Juego/BotonSuperJ1"+Escenario+".png");
+        Image image4 = new Image ("/resources/img/Interfaces/Juego/BotonSuperJ2"+Escenario+".png");
+        Image image5 = new Image ("/resources/img/Interfaces/Juego/Continuar"+Escenario+".png");
+        continuar.setImage(image5);
+        super1.setImage(image3);
+        super2.setImage(image4);
         super1.setVisible(false);
         super2.setVisible(false);
         personaje1.setVisible(true);
@@ -425,6 +446,8 @@ private double calcularDanio(Personaje atacante, Personaje atacado, boolean isSu
         }
 
         // Resto del código para el ataque crítico
+        Image image = new Image("/resources/img/Interfaces/Juego/critical.gif");
+        critical.setImage(image);
         critical.setVisible(true);
         FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.2), critical);
         fadeIn.setToValue(1.0);
@@ -493,6 +516,7 @@ public boolean comprobarSuper2() {
     barraj2.setProgress(jugador2.getVidaTotal());
 
     if (jugador1.getVidaTotal() <= 0) {
+        critical.setVisible(false);
         barraj1.setProgress(0);
         Image image = new Image("/resources/img/Personajes/"+p2+"/Victoria/"+"VictoriaD.gif");
         personaje2.setImage(image);
@@ -511,10 +535,12 @@ public boolean comprobarSuper2() {
         Image image3 = new Image("/resources/img/Interfaces/Juego/cartel2.gif");
         cartel.setImage(image3);
         cartel.setVisible(true);
+        continuar.setVisible(true);
     } else {
          barraj1.setStyle(""); 
     }
     if (jugador2.getVidaTotal() <= 0) {
+        critical.setVisible(false);
         barraj2.setProgress(0);
          Image image = new Image("/resources/img/Personajes/"+p1+"/Victoria/"+"Victoria.gif");
          Image image2 = new Image("/resources/img/Personajes/"+p2+"/Derrota/"+"DerrotaD.gif");
@@ -533,6 +559,7 @@ public boolean comprobarSuper2() {
         Image image4 = new Image("/resources/img/Interfaces/Juego/cartel.gif");
         cartel.setImage(image4);
         cartel.setVisible(true);
+        continuar.setVisible(true);
 
 
     } else {
@@ -612,5 +639,62 @@ private void manejarEntradasJugador2(KeyEvent event) {
     }
 }
 
+@FXML 
+private void continuar(MouseEvent event){
+    ImageView boton = (ImageView) event.getSource();
+    String idDelBoton = boton.getId();
+    
+    ScaleTransition expandirAnimacion = new ScaleTransition(Duration.seconds(0.3), boton);
+    expandirAnimacion.setFromX(1.0);
+    expandirAnimacion.setToX(0.9);
+    expandirAnimacion.setFromY(1.0);
+    expandirAnimacion.setToY(0.9);
+    expandirAnimacion.setFromX(0.9);
+    expandirAnimacion.setToX(1.0);
+    expandirAnimacion.setFromY(0.9);
+    expandirAnimacion.setToY(1.0);
+    expandirAnimacion.play();
+    
+   PauseTransition pause = new PauseTransition(Duration.seconds(2));
+
+    expandirAnimacion.setOnFinished(eventFinished -> {
+            try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("pantallatabla.fxml"));
+        Parent root = loader.load();
+        
+        PantallaTabla controlador = loader.getController();
+        
+        controlador.setGanadorYMapa(jugador1.getVidaTotal() <= 0 ? jugador2 : jugador1, Escenario);
+
+
+        // Configurar una transición de fundido
+        FadeTransition fadeOut = new FadeTransition(Duration.seconds(1), pane4);
+        fadeOut.setFromValue(1.0);
+        fadeOut.setToValue(0.0);
+
+        fadeOut.setOnFinished(e -> {
+            // Cambiar la escena después de que se complete la transición de fundido
+            pane4.getChildren().setAll(root);
+
+            // Configurar una transición de fundido para la nueva pantalla
+            FadeTransition fadeIn = new FadeTransition(Duration.seconds(1), pane4);
+            fadeIn.setFromValue(0.0);
+            fadeIn.setToValue(1.0);
+            fadeIn.play();
+        });
+
+        fadeOut.play();
+
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    });
+
+    expandirAnimacion.play();
+    pause.play();
 }
+
+}
+
+
 
