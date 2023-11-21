@@ -62,23 +62,19 @@ public void setGanadorYMapa(Personaje ganador, String mapa) {
     iniciobtn.setImage(image2);
     fondo.setImage(image);
 
-    // Limpiar la tabla antes de agregar nuevos datos
     tabla.getItems().clear();
     tabla.getColumns().clear();
 
-    // Crear columnas para la tabla
     TableColumn<JuegoResult, String> columnaEscenario = new TableColumn<>("Escenario");
     TableColumn<JuegoResult, String> columnaGanador = new TableColumn<>("Ganador");
     TableColumn<JuegoResult, String> columnaControlador = new TableColumn<>("Controlador");
 
     
-    // Configurar cómo se obtienen los valores de las celdas
 columnaEscenario.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEscenario()));
 columnaGanador.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getGanador()));
 columnaControlador.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getControlador()));
     
 ObservableList<JuegoResult> datosTabla = FXCollections.observableArrayList();
-    // Agregar las columnas a la tabla
     tabla.getColumns().addAll(columnaEscenario, columnaGanador, columnaControlador);
 
     MemoriaTabla memoriaTabla = MemoriaTabla.getInstancia();
