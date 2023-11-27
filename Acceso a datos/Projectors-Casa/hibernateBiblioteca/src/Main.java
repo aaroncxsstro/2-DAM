@@ -22,9 +22,9 @@ public class Main {
 
         while (!exit) {
             System.out.println("*****Menú Principal*****");
-            System.out.println("1. Menú Autor");
-            System.out.println("2. Menú Género");
-            System.out.println("3. Menú Libro");
+            System.out.println("1. Zona Autor");
+            System.out.println("2. Zona Género");
+            System.out.println("3. Zona Libro");
             System.out.println("4. Salir");
             System.out.print("Seleccione una opción (1-4): ");
 

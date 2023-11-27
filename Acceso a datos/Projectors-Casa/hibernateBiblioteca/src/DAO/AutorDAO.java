@@ -7,4 +7,5 @@ public interface AutorDAO {
     Autor eliminarAutor(int id);
     Autor anadirAutor();
     Autor editarAutor(int id);
+    
 }
