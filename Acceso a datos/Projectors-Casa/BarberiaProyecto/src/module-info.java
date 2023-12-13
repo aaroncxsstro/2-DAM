@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author aaron
- *
- */
-module BarberiaProyecto {
-}
